@@ -8,15 +8,15 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #0d1b2a;
-      --teal: #1b7a78;
-      --teal-light: #27b3b0;
-      --gold: #e8a020;
-      --gold-light: #f5c150;
-      --cream: #f7f4ef;
+      --navy: #000000;
+      --teal: #333333;
+      --teal-light: #555555;
+      --gold: #111111;
+      --gold-light: #444444;
+      --cream: #f2f2f2;
       --white: #ffffff;
-      --gray: #6b7280;
-      --gray-light: #f3f4f6;
+      --gray: #666666;
+      --gray-light: #eeeeee;
     }
 
     html { scroll-behavior: smooth; }
@@ -30,7 +30,7 @@
     /* ── NAV ── */
     nav {
       position: fixed; top: 0; width: 100%; z-index: 100;
-      background: rgba(13, 27, 42, 0.97);
+      background: rgba(0, 0, 0, 0.97);
       backdrop-filter: blur(8px);
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 5%;
@@ -82,7 +82,7 @@
     /* ── HERO ── */
     .hero {
       min-height: 100vh;
-      background: linear-gradient(135deg, var(--navy) 0%, #132d46 55%, #1a4a62 100%);
+      background: linear-gradient(135deg, #000000 0%, #1a1a1a 55%, #2d2d2d 100%);
       display: flex; align-items: center;
       padding: 100px 5% 60px;
       position: relative;
@@ -92,15 +92,15 @@
       content: '';
       position: absolute; inset: 0;
       background:
-        radial-gradient(ellipse 60% 60% at 70% 40%, rgba(27,122,120,0.18) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(232,160,32,0.10) 0%, transparent 60%);
+        radial-gradient(ellipse 60% 60% at 70% 40%, rgba(255,255,255,0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(255,255,255,0.03) 0%, transparent 60%);
       pointer-events: none;
     }
     .hero-grid {
       position: absolute; inset: 0;
       background-image:
-        linear-gradient(rgba(27,122,120,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(27,122,120,0.06) 1px, transparent 1px);
+        linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
       background-size: 60px 60px;
     }
     .hero-content {
@@ -109,9 +109,9 @@
     }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(27,122,120,0.25);
-      border: 1px solid rgba(39,179,176,0.4);
-      color: var(--teal-light);
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: rgba(255,255,255,0.85);
       font-family: 'Arial', sans-serif;
       font-size: 0.78rem;
       letter-spacing: 1.5px;
@@ -163,7 +163,7 @@
       transition: border-color 0.2s, background 0.2s;
       display: inline-flex; align-items: center; gap: 8px;
     }
-    .btn-secondary:hover { border-color: var(--teal-light); background: rgba(27,122,120,0.15); }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.7); background: rgba(255,255,255,0.1); }
 
     .hero-stats {
       display: flex; gap: 48px; flex-wrap: wrap;
@@ -251,10 +251,10 @@
       border: 1px solid #e5e7eb;
       transition: box-shadow 0.2s, transform 0.2s;
     }
-    .feature-card:hover { box-shadow: 0 8px 32px rgba(13,27,42,0.1); transform: translateY(-3px); }
+    .feature-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.12); transform: translateY(-3px); }
     .feature-icon {
       width: 52px; height: 52px;
-      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+      background: linear-gradient(135deg, #222222 0%, #444444 100%);
       border-radius: 10px;
       display: flex; align-items: center; justify-content: center;
       font-size: 24px;
@@ -326,7 +326,7 @@
     }
     .report-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
     .report-header {
-      background: linear-gradient(135deg, var(--navy) 0%, #1a3a56 100%);
+      background: linear-gradient(135deg, #000000 0%, #2a2a2a 100%);
       padding: 24px;
       position: relative;
       overflow: hidden;
@@ -336,7 +336,7 @@
       position: absolute; top: -20px; right: -20px;
       width: 80px; height: 80px;
       border-radius: 50%;
-      background: rgba(27,122,120,0.2);
+      background: rgba(255,255,255,0.1);
     }
     .report-tag {
       display: inline-block;
@@ -344,9 +344,9 @@
       font-size: 0.72rem;
       text-transform: uppercase;
       letter-spacing: 1px;
-      color: var(--gold);
-      background: rgba(232,160,32,0.15);
-      border: 1px solid rgba(232,160,32,0.3);
+      color: #ffffff;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
       padding: 3px 10px;
       border-radius: 12px;
       margin-bottom: 12px;
@@ -406,7 +406,7 @@
     .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
     .pricing-card.featured {
       border-color: var(--teal);
-      background: linear-gradient(180deg, #f0fafa 0%, var(--white) 100%);
+      background: linear-gradient(180deg, #f0f0f0 0%, var(--white) 100%);
     }
     .featured-badge {
       position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
