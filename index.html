@@ -581,6 +581,52 @@
       margin-top: 2px;
     }
 
+    /* ── FAQ ── */
+    .faq { background: var(--navy); }
+    .faq-header { margin-bottom: 48px; }
+    .faq-list { max-width: 820px; }
+    .faq-item {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .faq-item:first-child { border-top: 1px solid rgba(255,255,255,0.1); }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: left;
+      padding: 22px 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+    .faq-question:hover { color: var(--teal-light); }
+    .faq-chevron {
+      font-size: 0.8rem;
+      color: var(--teal);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+    .faq-answer {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.68);
+      line-height: 1.7;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+      padding-bottom: 22px;
+    }
+
     /* ── CTA BANNER ── */
     .cta-banner {
       background: linear-gradient(135deg, #5b21b6 0%, var(--teal) 100%);
@@ -673,6 +719,7 @@
   <ul class="nav-links">
     <li><a href="#features">Features</a></li>
     <li><a href="#regions">Regions</a></li>
+    <li><a href="#industries">Industries</a></li>
     <li><a href="#reports">Reports</a></li>
     <li><a href="#pricing">Pricing</a></li>
     <li><a href="#pricing" class="nav-cta">Get Access</a></li>
@@ -1028,6 +1075,71 @@
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-header">
+    <div class="section-label">FAQ</div>
+    <h2>Frequently Asked Questions</h2>
+    <p class="section-intro">Everything you need to know before you subscribe.</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item open">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What markets and regions does EMRL cover?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">
+        EMRL covers 60+ emerging and frontier markets across three core regions: Asia (20 countries), EEMEA — Eastern Europe, Middle East &amp; Africa (34 countries), and Latin America (18 countries). Coverage includes sovereign macro analysis, sector research, and company-level deep dives.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        How frequently is the research updated?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">
+        Country risk profiles and macro data are updated weekly. Market data (currencies, equities, bonds) is updated daily. Regulatory intelligence alerts are published within hours of a policy change. Sector and company reports are published on an ongoing basis — typically 3–5 new reports per week across our full coverage universe.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Can I access the API on all plans?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">
+        API access is available on the Professional and Institutional plans. The Professional plan includes full REST API access for data export in JSON, CSV, and Excel formats. The Institutional plan adds dedicated high-volume data feeds and white-label options. The Analyst plan includes basic CSV exports via the platform UI but does not include API access.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Is there a free trial?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">
+        Yes. All plans include a 14-day free trial with no credit card required. During your trial you get full access to the plan features you select. You can cancel at any time before the trial ends and will not be charged.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        What is your cancellation policy?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">
+        You can cancel your subscription at any time. For monthly billing, cancellation takes effect at the end of your current billing month. For annual plans, you may cancel at any time and will retain access through the end of your paid period. We do not offer prorated refunds on annual plans but we do offer a 30-day money-back guarantee for new subscribers.
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        Do you offer team or enterprise pricing?
+        <span class="faq-chevron">▼</span>
+      </button>
+      <div class="faq-answer">
+        Yes. Our Institutional plan is designed for teams of five or more and includes a team management dashboard, a dedicated research analyst, commissioned bespoke reports, and white-label data feeds. Contact our sales team at research@emrl.com for a custom quote based on your team size and requirements.
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- CTA BANNER -->
 <div class="cta-banner">
   <h2>Start Researching Smarter Today</h2>
@@ -1079,5 +1191,11 @@
   </div>
 </footer>
 
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    item.classList.toggle('open');
+  }
+</script>
 </body>
 </html>
