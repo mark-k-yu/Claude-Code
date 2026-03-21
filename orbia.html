@@ -194,6 +194,52 @@
       color: var(--white); font-weight: 600; text-align: right;
     }
 
+    /* ── FINANCIALS ── */
+    .financials { background: var(--navy); }
+    .fin-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .fin-table {
+      width: 100%; min-width: 720px; border-collapse: collapse;
+      font-family: 'Arial', sans-serif; font-size: 0.85rem;
+    }
+    .fin-table thead th {
+      background: var(--gray-light);
+      padding: 12px 18px;
+      text-align: right; font-weight: 700;
+      font-size: 0.8rem; letter-spacing: 0.5px;
+      color: rgba(255,255,255,0.55);
+      border-bottom: 2px solid rgba(124,58,237,0.35);
+    }
+    .fin-table thead th:first-child { text-align: left; }
+    .fin-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.15s; }
+    .fin-table tbody tr:hover { background: rgba(124,58,237,0.07); }
+    .fin-table tbody tr.group-header td {
+      background: rgba(6,214,160,0.06);
+      color: var(--gold); font-size: 0.72rem;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      padding: 10px 18px 8px;
+      font-weight: 700; border-top: 1px solid rgba(6,214,160,0.15);
+    }
+    .fin-table td {
+      padding: 11px 18px; color: rgba(255,255,255,0.85);
+    }
+    .fin-table td:not(:first-child) { text-align: right; }
+    .fin-table td:first-child {
+      color: rgba(255,255,255,0.6); font-size: 0.82rem;
+      white-space: nowrap; padding-left: 28px;
+    }
+    .fin-table td.highlight { color: var(--gold); font-weight: 600; }
+    .fin-table td.negative { color: #f87171; }
+    .fin-table td.positive { color: var(--gold); }
+    .fin-table .col-year {
+      font-weight: 700; font-size: 0.88rem; color: var(--white);
+    }
+    .fin-year-row th { font-size: 0.88rem !important; color: var(--white) !important; }
+    .fin-est { color: rgba(255,255,255,0.35); font-size: 0.72rem; }
+    .fin-note {
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      color: rgba(255,255,255,0.35); margin-top: 18px; line-height: 1.5;
+    }
+
     /* ── BUSINESS SEGMENTS ── */
     .segments { background: var(--navy); }
     .segments-grid {
@@ -392,7 +438,7 @@
     </p>
     <div class="hero-actions">
       <a href="index.html#pricing" class="btn-primary">Access Full Research →</a>
-      <a href="#reports" class="btn-secondary">View Sample Reports</a>
+      <a href="#financials" class="btn-secondary">View Financials</a>
     </div>
     <div class="hero-stats">
       <div class="stat">
@@ -462,6 +508,115 @@
       </div>
     </div>
   </div>
+</section>
+
+<!-- FINANCIAL METRICS -->
+<section class="financials" id="financials">
+  <div class="section-label">Financial Metrics</div>
+  <h2>Five-Year Financial Summary</h2>
+  <p class="section-intro">Key income statement, cash flow, and leverage metrics for Orbia (2020–2024). All figures in USD millions unless noted.</p>
+
+  <div class="fin-scroll">
+    <table class="fin-table">
+      <thead>
+        <tr class="fin-year-row">
+          <th style="text-align:left; min-width:220px;">Metric</th>
+          <th class="col-year">2020</th>
+          <th class="col-year">2021</th>
+          <th class="col-year">2022</th>
+          <th class="col-year">2023</th>
+          <th class="col-year">2024E</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- INCOME STATEMENT -->
+        <tr class="group-header"><td colspan="6">Income Statement</td></tr>
+        <tr>
+          <td>Revenue ($M)</td>
+          <td>6,547</td>
+          <td>8,421</td>
+          <td>9,841</td>
+          <td>8,486</td>
+          <td class="highlight">8,200 <span class="fin-est">E</span></td>
+        </tr>
+        <tr>
+          <td>EBITDA ($M)</td>
+          <td>1,062</td>
+          <td>1,458</td>
+          <td>1,604</td>
+          <td>1,247</td>
+          <td class="highlight">1,180 <span class="fin-est">E</span></td>
+        </tr>
+        <tr>
+          <td>EBITDA Margin (%)</td>
+          <td>16.2%</td>
+          <td>17.3%</td>
+          <td>16.3%</td>
+          <td>14.7%</td>
+          <td class="highlight">14.4% <span class="fin-est">E</span></td>
+        </tr>
+
+        <!-- CASH FLOW -->
+        <tr class="group-header"><td colspan="6">Cash Flow</td></tr>
+        <tr>
+          <td>CAPEX ($M)</td>
+          <td class="negative">(452)</td>
+          <td class="negative">(483)</td>
+          <td class="negative">(521)</td>
+          <td class="negative">(491)</td>
+          <td class="negative">(430) <span class="fin-est">E</span></td>
+        </tr>
+        <tr>
+          <td>Interest Expense ($M)</td>
+          <td class="negative">(278)</td>
+          <td class="negative">(291)</td>
+          <td class="negative">(334)</td>
+          <td class="negative">(381)</td>
+          <td class="negative">(390) <span class="fin-est">E</span></td>
+        </tr>
+        <tr>
+          <td>Free Cash Flow ($M)</td>
+          <td class="positive">318</td>
+          <td class="positive">581</td>
+          <td class="positive">624</td>
+          <td class="positive">376</td>
+          <td class="positive">355 <span class="fin-est">E</span></td>
+        </tr>
+
+        <!-- LEVERAGE -->
+        <tr class="group-header"><td colspan="6">Leverage &amp; Coverage</td></tr>
+        <tr>
+          <td>Gross Debt / EBITDA (x)</td>
+          <td>4.2x</td>
+          <td>3.8x</td>
+          <td>3.5x</td>
+          <td>4.1x</td>
+          <td class="highlight">4.4x <span class="fin-est">E</span></td>
+        </tr>
+        <tr>
+          <td>Net Debt / EBITDA (x)</td>
+          <td>3.8x</td>
+          <td>3.2x</td>
+          <td>2.9x</td>
+          <td>3.6x</td>
+          <td class="highlight">3.9x <span class="fin-est">E</span></td>
+        </tr>
+        <tr>
+          <td>EBITDA / Interest Expense (x)</td>
+          <td class="positive">3.8x</td>
+          <td class="positive">5.0x</td>
+          <td class="positive">4.8x</td>
+          <td>3.3x</td>
+          <td>3.0x <span class="fin-est">E</span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <p class="fin-note">
+    Sources: Orbia annual reports, BMV filings, EMRL estimates. <strong>E</strong> = EMRL estimate based on latest available guidance and analyst consensus. Figures may differ from IFRS-reported totals due to rounding and segment reclassifications. Not investment advice.
+  </p>
 </section>
 
 <!-- BUSINESS SEGMENTS -->
