@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Emerging Market Research Library</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0d1b2a;
+      --teal: #1b7a78;
+      --teal-light: #27b3b0;
+      --gold: #e8a020;
+      --gold-light: #f5c150;
+      --cream: #f7f4ef;
+      --white: #ffffff;
+      --gray: #6b7280;
+      --gray-light: #f3f4f6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Georgia', serif;
+      color: var(--navy);
+      background: var(--white);
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(13, 27, 42, 0.97);
+      backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 68px;
+      border-bottom: 2px solid var(--teal);
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: 12px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 38px; height: 38px;
+      background: var(--teal);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px;
+    }
+    .nav-logo-text {
+      color: var(--white);
+      font-size: 1rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      line-height: 1.2;
+    }
+    .nav-logo-text span { color: var(--gold); }
+    .nav-links {
+      display: flex; gap: 36px; list-style: none;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.78);
+      text-decoration: none;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.88rem;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--navy) !important;
+      padding: 8px 20px;
+      border-radius: 4px;
+      font-weight: bold !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, #132d46 55%, #1a4a62 100%);
+      display: flex; align-items: center;
+      padding: 100px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 70% 40%, rgba(27,122,120,0.18) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(232,160,32,0.10) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(27,122,120,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(27,122,120,0.06) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      max-width: 680px;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(27,122,120,0.25);
+      border: 1px solid rgba(39,179,176,0.4);
+      color: var(--teal-light);
+      font-family: 'Arial', sans-serif;
+      font-size: 0.78rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before { content: '●'; font-size: 8px; }
+    h1 {
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 24px;
+    }
+    h1 span { color: var(--gold); }
+    .hero-sub {
+      font-family: 'Arial', sans-serif;
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.72);
+      line-height: 1.7;
+      max-width: 560px;
+      margin-bottom: 40px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+      padding: 15px 36px;
+      border-radius: 5px;
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      font-size: 0.95rem;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.35);
+      padding: 15px 36px;
+      border-radius: 5px;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-secondary:hover { border-color: var(--teal-light); background: rgba(27,122,120,0.15); }
+
+    .hero-stats {
+      display: flex; gap: 48px; flex-wrap: wrap;
+      margin-top: 56px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .stat { text-align: left; }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--gold);
+    }
+    .stat-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.55);
+      letter-spacing: 0.5px;
+      margin-top: 2px;
+    }
+
+    /* ── TRUSTED BY ── */
+    .trusted {
+      background: var(--cream);
+      padding: 36px 5%;
+      text-align: center;
+      border-bottom: 1px solid #e5e0d8;
+    }
+    .trusted p {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: var(--gray);
+      margin-bottom: 20px;
+    }
+    .trust-logos {
+      display: flex; justify-content: center; align-items: center;
+      gap: 48px; flex-wrap: wrap;
+    }
+    .trust-logo {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.88rem;
+      font-weight: bold;
+      color: #9ca3af;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 88px 5%; }
+    .section-label {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    h2 {
+      font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+    .section-intro {
+      font-family: 'Arial', sans-serif;
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 600px;
+    }
+
+    /* ── FEATURES ── */
+    .features { background: var(--white); }
+    .features-header { margin-bottom: 56px; }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+    }
+    .feature-card {
+      background: var(--gray-light);
+      border-radius: 10px;
+      padding: 32px 28px;
+      border: 1px solid #e5e7eb;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .feature-card:hover { box-shadow: 0 8px 32px rgba(13,27,42,0.1); transform: translateY(-3px); }
+    .feature-icon {
+      width: 52px; height: 52px;
+      background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+    .feature-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+    }
+    .feature-card p {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.9rem;
+      color: var(--gray);
+      line-height: 1.65;
+    }
+
+    /* ── REGIONS ── */
+    .regions { background: var(--cream); }
+    .regions-header { margin-bottom: 48px; }
+    .regions-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .region-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 28px 24px;
+      border-left: 4px solid var(--teal);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .region-card:hover { border-color: var(--gold); transform: translateY(-2px); }
+    .region-flag { font-size: 2rem; margin-bottom: 12px; }
+    .region-card h3 { font-size: 1.05rem; margin-bottom: 8px; }
+    .region-card p {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.5;
+    }
+    .region-count {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: var(--teal);
+      letter-spacing: 0.5px;
+    }
+
+    /* ── REPORTS ── */
+    .reports { background: var(--white); }
+    .reports-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      flex-wrap: wrap; gap: 16px;
+      margin-bottom: 40px;
+    }
+    .reports-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .report-card {
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: box-shadow 0.2s;
+    }
+    .report-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+    .report-header {
+      background: linear-gradient(135deg, var(--navy) 0%, #1a3a56 100%);
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .report-header::after {
+      content: '';
+      position: absolute; top: -20px; right: -20px;
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: rgba(27,122,120,0.2);
+    }
+    .report-tag {
+      display: inline-block;
+      font-family: 'Arial', sans-serif;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--gold);
+      background: rgba(232,160,32,0.15);
+      border: 1px solid rgba(232,160,32,0.3);
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-bottom: 12px;
+    }
+    .report-header h3 {
+      color: var(--white);
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+    .report-body { padding: 20px 24px; }
+    .report-meta {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .report-meta span {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.78rem;
+      color: var(--gray);
+      display: flex; align-items: center; gap: 4px;
+    }
+    .report-body p {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.88rem;
+      color: #4b5563;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+    .report-link {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: var(--teal);
+      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 5px;
+      transition: color 0.2s;
+    }
+    .report-link:hover { color: var(--teal-light); }
+
+    /* ── PRICING ── */
+    .pricing { background: var(--cream); }
+    .pricing-header { text-align: center; margin-bottom: 52px; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 36px 32px;
+      border: 2px solid #e5e7eb;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .pricing-card:hover { transform: translateY(-4px); box-shadow: 0 16px 40px rgba(0,0,0,0.1); }
+    .pricing-card.featured {
+      border-color: var(--teal);
+      background: linear-gradient(180deg, #f0fafa 0%, var(--white) 100%);
+    }
+    .featured-badge {
+      position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+      background: var(--teal);
+      color: var(--white);
+      font-family: 'Arial', sans-serif;
+      font-size: 0.75rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 5px 16px;
+      border-radius: 20px;
+    }
+    .pricing-tier {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gray);
+      margin-bottom: 8px;
+    }
+    .pricing-price {
+      font-size: 2.4rem;
+      font-weight: bold;
+      color: var(--navy);
+      margin-bottom: 4px;
+      line-height: 1;
+    }
+    .pricing-price sup {
+      font-size: 1.2rem;
+      vertical-align: super;
+    }
+    .pricing-period {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.85rem;
+      color: var(--gray);
+      margin-bottom: 24px;
+    }
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+    .pricing-features li {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.9rem;
+      color: #374151;
+      padding: 8px 0;
+      border-bottom: 1px solid #f3f4f6;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--teal);
+      font-weight: bold;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .btn-plan {
+      display: block; width: 100%;
+      text-align: center;
+      padding: 14px;
+      border-radius: 6px;
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-plan-outline {
+      border: 2px solid var(--navy);
+      color: var(--navy);
+    }
+    .btn-plan-outline:hover { background: var(--navy); color: var(--white); }
+    .btn-plan-fill {
+      background: var(--teal);
+      color: var(--white);
+    }
+    .btn-plan-fill:hover { background: var(--teal-light); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--navy); }
+    .testimonials .section-label { color: var(--gold); }
+    .testimonials h2 { color: var(--white); }
+    .testimonials-header { margin-bottom: 52px; }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 32px;
+    }
+    .stars { color: var(--gold); font-size: 1rem; margin-bottom: 16px; }
+    .testimonial-card blockquote {
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .author-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: bold;
+      color: var(--white);
+      font-family: 'Arial', sans-serif;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+    .author-name {
+      font-family: 'Arial', sans-serif;
+      font-weight: bold;
+      font-size: 0.9rem;
+      color: var(--white);
+    }
+    .author-title {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--teal) 0%, #155f5d 100%);
+      padding: 72px 5%;
+      text-align: center;
+    }
+    .cta-banner h2 { color: var(--white); margin-bottom: 14px; }
+    .cta-banner p {
+      font-family: 'Arial', sans-serif;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.8);
+      max-width: 520px;
+      margin: 0 auto 36px;
+      line-height: 1.65;
+    }
+    .cta-banner .btn-primary {
+      background: var(--gold);
+      font-size: 1rem;
+      padding: 16px 44px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #07111c;
+      padding: 56px 5% 32px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+    .footer-brand .nav-logo-text { font-size: 1.05rem; }
+    .footer-brand p {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.85rem;
+      line-height: 1.65;
+      margin-top: 14px;
+      max-width: 280px;
+    }
+    .footer-col h4 {
+      color: var(--white);
+      font-family: 'Arial', sans-serif;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--teal-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.82rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 28px; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+      .reports-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-icon">📚</div>
+    <div class="nav-logo-text">EMRL <span>Research</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#features">Features</a></li>
+    <li><a href="#regions">Regions</a></li>
+    <li><a href="#reports">Reports</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#pricing" class="nav-cta">Get Access</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Trusted by 2,400+ Analysts Worldwide</div>
+    <h1>The Premier <span>Emerging Market</span> Research Library</h1>
+    <p class="hero-sub">
+      Access in-depth research, macroeconomic data, and sector analysis covering 60+ frontier
+      and emerging markets. Empower your investment decisions with institutional-grade intelligence.
+    </p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">Start Free Trial →</a>
+      <a href="#reports" class="btn-secondary">Browse Reports</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-number">12,000+</div>
+        <div class="stat-label">Research Reports</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">60+</div>
+        <div class="stat-label">Markets Covered</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Expert Analysts</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">Daily</div>
+        <div class="stat-label">Data Updates</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUSTED BY -->
+<div class="trusted">
+  <p>Trusted by leading institutions</p>
+  <div class="trust-logos">
+    <span class="trust-logo">Global Capital Partners</span>
+    <span class="trust-logo">Meridian Advisors</span>
+    <span class="trust-logo">Frontier AM</span>
+    <span class="trust-logo">Atlas Investments</span>
+    <span class="trust-logo">Vanguard EM</span>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="features-header">
+    <div class="section-label">Platform Features</div>
+    <h2>Everything You Need to Research<br>Emerging Markets</h2>
+    <p class="section-intro">
+      From on-the-ground intelligence to quantitative data models, our platform gives you the
+      full picture before you make a move.
+    </p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🗺️</div>
+      <h3>Country Risk Profiles</h3>
+      <p>Comprehensive sovereign risk assessments updated weekly, covering political stability, regulatory environment, and macroeconomic indicators for every market.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📈</div>
+      <h3>Sector Deep Dives</h3>
+      <p>In-depth analysis of key growth sectors — fintech, infrastructure, agribusiness, energy — with competitive landscape mapping and growth forecasts.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">💹</div>
+      <h3>Live Market Data</h3>
+      <p>Real-time currency, equity, and bond data with historical context. Track capital flows and FX movements across 40 emerging market currencies.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏛️</div>
+      <h3>Regulatory Intelligence</h3>
+      <p>Monitor policy shifts, trade agreements, and investment frameworks. Receive instant alerts when regulations change in your tracked markets.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🔍</div>
+      <h3>Advanced Search & Filters</h3>
+      <p>Find exactly what you need across 12,000+ reports with semantic search, custom filters by sector, region, risk rating, and publication date.</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <h3>Data Export & API</h3>
+      <p>Export datasets in Excel, CSV, or JSON. Connect to your existing models via our REST API to integrate emerging market data directly into your workflow.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REGIONS -->
+<section class="regions" id="regions">
+  <div class="regions-header">
+    <div class="section-label">Coverage</div>
+    <h2>60+ Markets Across Every<br>Major Emerging Region</h2>
+    <p class="section-intro">
+      From Sub-Saharan Africa to Southeast Asia, our research network spans every significant
+      frontier and emerging market.
+    </p>
+  </div>
+  <div class="regions-grid">
+    <div class="region-card">
+      <div class="region-flag">🌍</div>
+      <h3>Sub-Saharan Africa</h3>
+      <p>Nigeria, Kenya, South Africa, Ethiopia, Ghana, Côte d'Ivoire, and 10 more high-growth markets.</p>
+      <span class="region-count">16 countries · 2,400+ reports</span>
+    </div>
+    <div class="region-card">
+      <div class="region-flag">🌏</div>
+      <h3>Southeast Asia</h3>
+      <p>Vietnam, Indonesia, Philippines, Myanmar, Cambodia — the fastest-growing regional bloc.</p>
+      <span class="region-count">10 countries · 3,100+ reports</span>
+    </div>
+    <div class="region-card">
+      <div class="region-flag">🌐</div>
+      <h3>South Asia</h3>
+      <p>India, Bangladesh, Pakistan, Sri Lanka — a combined market of 1.9 billion consumers.</p>
+      <span class="region-count">6 countries · 1,800+ reports</span>
+    </div>
+    <div class="region-card">
+      <div class="region-flag">🌎</div>
+      <h3>Latin America</h3>
+      <p>Brazil, Mexico, Colombia, Peru, Chile — established and frontier opportunities side by side.</p>
+      <span class="region-count">12 countries · 2,200+ reports</span>
+    </div>
+    <div class="region-card">
+      <div class="region-flag">🗺️</div>
+      <h3>MENA</h3>
+      <p>Egypt, Morocco, Saudi Arabia, UAE, Jordan — navigating political dynamics and oil dependencies.</p>
+      <span class="region-count">10 countries · 1,600+ reports</span>
+    </div>
+    <div class="region-card">
+      <div class="region-flag">🏔️</div>
+      <h3>Central Asia & CEE</h3>
+      <p>Kazakhstan, Uzbekistan, Poland, Romania — emerging powerhouses often overlooked by mainstream research.</p>
+      <span class="region-count">8 countries · 900+ reports</span>
+    </div>
+  </div>
+</section>
+
+<!-- REPORTS -->
+<section class="reports" id="reports">
+  <div class="reports-header">
+    <div>
+      <div class="section-label">Featured Research</div>
+      <h2>Latest Reports</h2>
+    </div>
+    <a href="#" class="btn-secondary" style="border-color: var(--teal); color: var(--teal); white-space: nowrap;">View All Reports →</a>
+  </div>
+  <div class="reports-grid">
+    <div class="report-card">
+      <div class="report-header">
+        <div class="report-tag">Macroeconomics</div>
+        <h3>Nigeria's 2026 Growth Outlook: Navigating Naira Volatility and Fiscal Reform</h3>
+      </div>
+      <div class="report-body">
+        <div class="report-meta">
+          <span>📍 Nigeria</span>
+          <span>🗓 Mar 2026</span>
+          <span>📄 48 pages</span>
+        </div>
+        <p>An analysis of Nigeria's monetary policy response, subsidy reform progress, and what the FX liberalization means for foreign investors in 2026.</p>
+        <a href="#" class="report-link">Read Report →</a>
+      </div>
+    </div>
+    <div class="report-card">
+      <div class="report-header">
+        <div class="report-tag">Fintech</div>
+        <h3>Southeast Asia Fintech: The Race to Bank the Unbanked Across ASEAN</h3>
+      </div>
+      <div class="report-body">
+        <div class="report-meta">
+          <span>📍 SE Asia</span>
+          <span>🗓 Mar 2026</span>
+          <span>📄 62 pages</span>
+        </div>
+        <p>How digital wallets, embedded finance, and crypto rails are reshaping financial access for 300M underbanked adults across the ASEAN region.</p>
+        <a href="#" class="report-link">Read Report →</a>
+      </div>
+    </div>
+    <div class="report-card">
+      <div class="report-header">
+        <div class="report-tag">Infrastructure</div>
+        <h3>India's Infrastructure Supercycle: Mapping $1.4T in Capital Deployment</h3>
+      </div>
+      <div class="report-body">
+        <div class="report-meta">
+          <span>📍 India</span>
+          <span>🗓 Feb 2026</span>
+          <span>📄 74 pages</span>
+        </div>
+        <p>A sector-by-sector breakdown of India's national infrastructure pipeline, identifying the highest-return opportunities for private investors.</p>
+        <a href="#" class="report-link">Read Report →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-header">
+    <div class="section-label">Pricing</div>
+    <h2>Choose Your Access Plan</h2>
+    <p class="section-intro" style="margin: 0 auto;">
+      Start with a 14-day free trial. No credit card required.
+    </p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="pricing-tier">Analyst</div>
+      <div class="pricing-price"><sup>$</sup>99</div>
+      <div class="pricing-period">per month, billed annually</div>
+      <ul class="pricing-features">
+        <li>Access to 5,000+ core reports</li>
+        <li>2 regional focuses</li>
+        <li>Weekly briefings</li>
+        <li>Basic data export (CSV)</li>
+        <li>Email support</li>
+      </ul>
+      <a href="#" class="btn-plan btn-plan-outline">Start Free Trial</a>
+    </div>
+    <div class="pricing-card featured">
+      <div class="featured-badge">Most Popular</div>
+      <div class="pricing-tier">Professional</div>
+      <div class="pricing-price"><sup>$</sup>249</div>
+      <div class="pricing-period">per month, billed annually</div>
+      <ul class="pricing-features">
+        <li>Full library — 12,000+ reports</li>
+        <li>All 60+ markets</li>
+        <li>Daily intelligence briefings</li>
+        <li>Advanced data export + API</li>
+        <li>Custom alerts & watchlists</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="#" class="btn-plan btn-plan-fill">Start Free Trial</a>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-tier">Institutional</div>
+      <div class="pricing-price">Custom</div>
+      <div class="pricing-period">for teams of 5+</div>
+      <ul class="pricing-features">
+        <li>Everything in Professional</li>
+        <li>Team management dashboard</li>
+        <li>Dedicated research analyst</li>
+        <li>Bespoke commissioned reports</li>
+        <li>White-label data feeds</li>
+      </ul>
+      <a href="#" class="btn-plan btn-plan-outline">Contact Sales</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="testimonials-header">
+    <div class="section-label">Testimonials</div>
+    <h2>Trusted by Analysts at<br>Leading Institutions</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"EMRL has become our team's go-to source for frontier market intelligence. The depth of coverage on Sub-Saharan Africa alone is unmatched by any competing platform."</blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar">SR</div>
+        <div>
+          <div class="author-name">Sarah Reinhardt</div>
+          <div class="author-title">Director of Research, Global Capital Partners</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"The regulatory intelligence alerts saved us from a very expensive mistake in Vietnam. The speed of updates when policy changes happen is genuinely impressive."</blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar">JL</div>
+        <div>
+          <div class="author-name">James Luo</div>
+          <div class="author-title">Senior Analyst, Meridian Advisors</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"We integrated the API into our internal models in under a day. Real-time FX and macro data flowing directly into our risk models has been transformational."</blockquote>
+      <div class="testimonial-author">
+        <div class="author-avatar">AM</div>
+        <div>
+          <div class="author-name">Amara Mensah</div>
+          <div class="author-title">Quant Strategist, Frontier Asset Management</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Start Researching Smarter Today</h2>
+  <p>Join 2,400+ analysts who rely on the Emerging Market Research Library for their most critical investment decisions.</p>
+  <a href="#pricing" class="btn-primary">Get 14 Days Free →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="nav-logo" href="#" style="display:inline-flex; margin-bottom: 0;">
+        <div class="nav-logo-icon" style="width:32px;height:32px;font-size:16px;">📚</div>
+        <div class="nav-logo-text" style="margin-left:10px;">EMRL <span>Research</span></div>
+      </a>
+      <p>The world's most comprehensive library for emerging and frontier market research. Powering institutional investment decisions since 2014.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <ul>
+        <li><a href="#">Reports Library</a></li>
+        <li><a href="#">Market Data</a></li>
+        <li><a href="#">Alerts</a></li>
+        <li><a href="#">API Docs</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Regions</h4>
+      <ul>
+        <li><a href="#">Africa</a></li>
+        <li><a href="#">Southeast Asia</a></li>
+        <li><a href="#">Latin America</a></li>
+        <li><a href="#">MENA</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Emerging Market Research Library. All rights reserved.</p>
+    <p>research@emrl.com · +1 (212) 555-0147</p>
+  </div>
+</footer>
+
+</body>
+</html>
