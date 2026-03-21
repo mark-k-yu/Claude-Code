@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Orbia — Company Coverage — EMRL Research</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0f0f13;
+      --teal: #7c3aed;
+      --teal-light: #a78bfa;
+      --gold: #06d6a0;
+      --gold-light: #34eba4;
+      --cream: #16161f;
+      --white: #ffffff;
+      --gray: #94a3b8;
+      --gray-light: #1e1e2a;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', 'Segoe UI', system-ui, sans-serif; color: var(--white); background: var(--navy); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(15,15,19,0.85); backdrop-filter: blur(20px);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 68px;
+      border-bottom: 2px solid var(--teal);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+    .nav-logo-icon {
+      width: 38px; height: 38px; background: var(--teal); border-radius: 6px;
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+    }
+    .nav-logo-text { color: var(--white); font-size: 1rem; font-weight: bold; letter-spacing: 0.5px; line-height: 1.2; }
+    .nav-logo-text span { color: var(--gold); }
+    .nav-links { display: flex; gap: 36px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.78); text-decoration: none;
+      font-family: 'Arial', sans-serif; font-size: 0.88rem;
+      letter-spacing: 0.8px; text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-cta {
+      background: var(--gold); color: var(--navy) !important;
+      padding: 8px 20px; border-radius: 4px; font-weight: bold !important;
+      transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: var(--gold-light) !important; color: var(--navy) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 58vh;
+      background: linear-gradient(135deg, #0f0f13 0%, #13101f 55%, #190f2e 100%);
+      display: flex; align-items: center;
+      padding: 120px 5% 72px;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 55% at 72% 38%, rgba(124,58,237,0.22) 0%, transparent 70%),
+        radial-gradient(ellipse 35% 35% at 12% 72%, rgba(6,214,160,0.10) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(124,58,237,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(124,58,237,0.07) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 760px; }
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-family: 'Arial', sans-serif; font-size: 0.82rem;
+      color: rgba(255,255,255,0.5); letter-spacing: 0.5px; margin-bottom: 24px;
+    }
+    .breadcrumb a { color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .breadcrumb a:hover { color: var(--gold-light); }
+    .breadcrumb span { color: var(--gold); }
+
+    .company-hero-top {
+      display: flex; align-items: center; gap: 22px; margin-bottom: 28px;
+    }
+    .company-logo-lg {
+      width: 68px; height: 68px; border-radius: 12px;
+      background: linear-gradient(135deg, var(--teal), #4c1d95);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 700; letter-spacing: 0.5px;
+      color: var(--white); flex-shrink: 0;
+    }
+    .company-hero-meta { display: flex; flex-direction: column; gap: 6px; }
+    .company-hero-meta h1 { font-size: clamp(2rem, 4.5vw, 3rem); line-height: 1.1; margin-bottom: 0; }
+    .company-hero-meta h1 span { color: var(--gold); }
+    .company-badges { display: flex; gap: 8px; flex-wrap: wrap; }
+    .badge {
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      letter-spacing: 1.2px; text-transform: uppercase;
+      padding: 4px 11px; border-radius: 12px;
+    }
+    .badge-sector {
+      background: rgba(6,214,160,0.12); color: var(--gold);
+      border: 1px solid rgba(6,214,160,0.25);
+    }
+    .badge-hq {
+      background: rgba(124,58,237,0.15); color: var(--teal-light);
+      border: 1px solid rgba(124,58,237,0.3);
+    }
+    .badge-listed {
+      background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+    .hero-sub {
+      font-family: 'Arial', sans-serif; font-size: 1.05rem;
+      color: rgba(255,255,255,0.7); line-height: 1.7;
+      max-width: 640px; margin-bottom: 36px;
+    }
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--gold); color: var(--navy);
+      padding: 13px 32px; border-radius: 5px;
+      font-family: 'Arial', sans-serif; font-weight: bold; font-size: 0.95rem;
+      text-decoration: none; letter-spacing: 0.5px;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+    .btn-secondary {
+      background: transparent; color: var(--white);
+      border: 2px solid rgba(255,255,255,0.35);
+      padding: 13px 32px; border-radius: 5px;
+      font-family: 'Arial', sans-serif; font-size: 0.95rem;
+      text-decoration: none; transition: border-color 0.2s, background 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-secondary:hover { border-color: var(--teal-light); background: rgba(124,58,237,0.15); }
+
+    .hero-stats {
+      display: flex; gap: 48px; flex-wrap: wrap;
+      margin-top: 48px; padding-top: 32px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .stat-number { font-size: 1.9rem; font-weight: bold; color: var(--gold); }
+    .stat-label {
+      font-family: 'Arial', sans-serif; font-size: 0.8rem;
+      color: rgba(255,255,255,0.5); text-transform: uppercase;
+      letter-spacing: 1px; margin-top: 2px;
+    }
+
+    /* ── SECTIONS COMMON ── */
+    section { padding: 80px 5%; }
+    .section-label {
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      text-transform: uppercase; letter-spacing: 2px;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); color: var(--white); margin-bottom: 16px; }
+    .section-intro {
+      font-family: 'Arial', sans-serif; font-size: 1rem;
+      color: rgba(255,255,255,0.6); line-height: 1.65;
+      max-width: 640px; margin-bottom: 44px;
+    }
+
+    /* ── OVERVIEW ── */
+    .overview { background: var(--cream); }
+    .overview-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px;
+    }
+    .overview-col p {
+      font-family: 'Arial', sans-serif; font-size: 0.9rem;
+      color: rgba(255,255,255,0.65); line-height: 1.75;
+      margin-bottom: 16px;
+    }
+    .key-facts { display: flex; flex-direction: column; gap: 14px; }
+    .fact-row {
+      display: flex; justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding-bottom: 12px;
+    }
+    .fact-row:last-child { border-bottom: none; }
+    .fact-label {
+      font-family: 'Arial', sans-serif; font-size: 0.82rem;
+      color: rgba(255,255,255,0.45); text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+    .fact-value {
+      font-family: 'Arial', sans-serif; font-size: 0.88rem;
+      color: var(--white); font-weight: 600; text-align: right;
+    }
+
+    /* ── BUSINESS SEGMENTS ── */
+    .segments { background: var(--navy); }
+    .segments-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;
+    }
+    .segment-card {
+      background: var(--gray-light);
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 10px; padding: 26px 22px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .segment-card:hover { border-color: var(--teal); transform: translateY(-3px); }
+    .segment-icon { font-size: 2rem; margin-bottom: 14px; line-height: 1; }
+    .segment-card h3 { font-size: 0.98rem; font-weight: 700; margin-bottom: 6px; }
+    .segment-share {
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      color: var(--gold); margin-bottom: 10px;
+    }
+    .segment-card p {
+      font-family: 'Arial', sans-serif; font-size: 0.83rem;
+      color: rgba(255,255,255,0.57); line-height: 1.55;
+    }
+
+    /* ── INVESTMENT CONSIDERATIONS ── */
+    .considerations { background: var(--cream); }
+    .considerations-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .consideration-card {
+      background: var(--gray-light);
+      border-radius: 10px; padding: 24px 22px;
+    }
+    .consideration-card.bull { border-left: 3px solid var(--gold); }
+    .consideration-card.bear { border-left: 3px solid #ef4444; }
+    .consideration-card h4 {
+      font-size: 0.85rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .consideration-card.bull h4 { color: var(--gold); }
+    .consideration-card.bear h4 { color: #ef4444; }
+    .consideration-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .consideration-card li {
+      font-family: 'Arial', sans-serif; font-size: 0.84rem;
+      color: rgba(255,255,255,0.65); line-height: 1.5;
+      padding-left: 16px; position: relative;
+    }
+    .consideration-card.bull li::before { content: '↑'; position: absolute; left: 0; color: var(--gold); font-size: 0.75rem; }
+    .consideration-card.bear li::before { content: '↓'; position: absolute; left: 0; color: #ef4444; font-size: 0.75rem; }
+
+    /* ── REPORTS ── */
+    .reports { background: var(--navy); }
+    .reports-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 24px; margin-bottom: 36px; flex-wrap: wrap;
+    }
+    .reports-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px;
+    }
+    .report-card {
+      background: var(--gray-light);
+      border: 1px solid rgba(124,58,237,0.18);
+      border-radius: 10px; overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .report-card:hover { transform: translateY(-4px); border-color: var(--teal); }
+    .report-header {
+      background: linear-gradient(135deg, #1a1030, #1e1e2a);
+      padding: 24px 24px 20px;
+      border-bottom: 1px solid rgba(124,58,237,0.2);
+    }
+    .report-tag {
+      display: inline-block;
+      background: rgba(6,214,160,0.15); color: var(--gold);
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 12px; margin-bottom: 10px;
+    }
+    .report-header h3 { font-size: 0.95rem; font-weight: 600; line-height: 1.45; color: var(--white); }
+    .report-body { padding: 20px 24px 24px; }
+    .report-meta {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      color: rgba(255,255,255,0.5); margin-bottom: 12px;
+    }
+    .report-body p {
+      font-family: 'Arial', sans-serif; font-size: 0.85rem;
+      color: rgba(255,255,255,0.62); line-height: 1.6; margin-bottom: 16px;
+    }
+    .report-link {
+      color: var(--gold); font-family: 'Arial', sans-serif;
+      font-size: 0.85rem; font-weight: bold;
+      text-decoration: none; transition: color 0.2s;
+    }
+    .report-link:hover { color: var(--gold-light); }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, #1a0b33, #0d2e22);
+      border-top: 1px solid rgba(124,58,237,0.3);
+      border-bottom: 1px solid rgba(6,214,160,0.3);
+      padding: 72px 5%; text-align: center;
+    }
+    .cta-banner h2 { margin-bottom: 16px; }
+    .cta-banner p {
+      font-family: 'Arial', sans-serif; font-size: 1rem;
+      color: rgba(255,255,255,0.65); max-width: 540px;
+      margin: 0 auto 36px; line-height: 1.65;
+    }
+
+    /* ── FOOTER ── */
+    footer { background: #08080d; padding: 56px 5% 32px; color: rgba(255,255,255,0.5); }
+    .footer-grid {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; margin-bottom: 48px;
+    }
+    .footer-brand p {
+      font-family: 'Arial', sans-serif; font-size: 0.85rem;
+      line-height: 1.65; margin-top: 14px; max-width: 280px;
+    }
+    .footer-col h4 {
+      color: var(--white); font-family: 'Arial', sans-serif;
+      font-size: 0.82rem; text-transform: uppercase;
+      letter-spacing: 1.5px; margin-bottom: 16px;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: 8px; }
+    .footer-col a {
+      font-family: 'Arial', sans-serif; font-size: 0.88rem;
+      color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s;
+    }
+    .footer-col a:hover { color: var(--teal-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 24px;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 12px;
+    }
+    .footer-bottom p { font-family: 'Arial', sans-serif; font-size: 0.82rem; }
+
+    @media (max-width: 900px) {
+      .overview-grid { grid-template-columns: 1fr; }
+      .considerations-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stats { gap: 28px; }
+      .company-hero-top { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 480px) {
+      .footer-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="index.html">
+    <div class="nav-logo-icon">📚</div>
+    <div class="nav-logo-text">EMRL <span>Research</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#features">Features</a></li>
+    <li><a href="index.html#regions">Regions</a></li>
+    <li><a href="index.html#reports">Reports</a></li>
+    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="index.html#pricing" class="nav-cta">Get Access</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> ›
+      <a href="index.html#industries">Industries</a> ›
+      <a href="petrochemicals.html">Petrochemicals</a> ›
+      <span>Orbia</span>
+    </div>
+    <div class="company-hero-top">
+      <div class="company-logo-lg">ORB</div>
+      <div class="company-hero-meta">
+        <h1>Orbia <span>Advance</span></h1>
+        <div class="company-badges">
+          <span class="badge badge-sector">Plastics &amp; Polymers</span>
+          <span class="badge badge-hq">🇲🇽 Mexico City</span>
+          <span class="badge badge-listed">BMV: ORBIA</span>
+        </div>
+      </div>
+    </div>
+    <p class="hero-sub">
+      A global specialty chemicals and materials company operating across five business groups — from PVC pipe systems and fluorochemicals to precision irrigation, data infrastructure, and polymer solutions. Orbia serves customers in more than 100 countries with a unique emerging-market footprint.
+    </p>
+    <div class="hero-actions">
+      <a href="index.html#pricing" class="btn-primary">Access Full Research →</a>
+      <a href="#reports" class="btn-secondary">View Sample Reports</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-number">$8.2B</div>
+        <div class="stat-label">Revenue (2024)</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">22,000+</div>
+        <div class="stat-label">Employees</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">100+</div>
+        <div class="stat-label">Countries served</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">5</div>
+        <div class="stat-label">Business groups</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section class="overview" id="overview">
+  <div class="section-label">Company Overview</div>
+  <h2>About Orbia</h2>
+  <div class="overview-grid">
+    <div class="overview-col">
+      <p>Orbia (formerly Mexichem) is a Mexico City-headquartered specialty chemicals and materials conglomerate listed on the Bolsa Mexicana de Valores. The company rebranded in 2019 to reflect a strategic pivot from a pure polymer producer towards a diversified solutions business spanning infrastructure, agriculture, and digital connectivity.</p>
+      <p>Orbia's five business groups — Polymer Solutions (Vestolit &amp; Alphagary), Building &amp; Infrastructure (Wavin), Precision Agriculture (Netafim), Fluor &amp; Energy Materials (Koura), and Data Infrastructure (Dura-Line) — give it an unusual combination of chemical manufacturing depth and downstream application reach.</p>
+      <p>Emerging market exposure is significant: Latin America contributes roughly a third of group revenue, and Netafim's irrigation systems are critical infrastructure in water-stressed markets across Africa, India, and the Middle East.</p>
+    </div>
+    <div class="overview-col">
+      <div class="key-facts">
+        <div class="fact-row">
+          <span class="fact-label">Founded</span>
+          <span class="fact-value">1953 (as Mexichem)</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-label">Headquarters</span>
+          <span class="fact-value">Mexico City, Mexico</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-label">Stock Exchange</span>
+          <span class="fact-value">BMV: ORBIA*</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-label">Market Cap</span>
+          <span class="fact-value">~$3.5B (2025)</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-label">Revenue (2024)</span>
+          <span class="fact-value">~$8.2B</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-label">EBITDA Margin</span>
+          <span class="fact-value">~14–16%</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-label">Key Shareholders</span>
+          <span class="fact-value">Kaluz Group (controlling)</span>
+        </div>
+        <div class="fact-row">
+          <span class="fact-label">Primary Sectors</span>
+          <span class="fact-value">Chemicals · Agtech · Datacom</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUSINESS SEGMENTS -->
+<section class="segments" id="segments">
+  <div class="section-label">Business Groups</div>
+  <h2>Five Divisions, One Platform</h2>
+  <p class="section-intro">Orbia's five business groups operate largely independently, united by a shared focus on delivering essential material solutions to infrastructure, food, and connectivity challenges.</p>
+  <div class="segments-grid">
+    <div class="segment-card">
+      <div class="segment-icon">🧴</div>
+      <h3>Polymer Solutions</h3>
+      <div class="segment-share">~25% of group revenue</div>
+      <p>PVC compounds and specialty polymers under the Vestolit and Alphagary brands. Serves wire &amp; cable, flooring, medical, and automotive markets globally, with key plants in Germany, UK, and Mexico.</p>
+    </div>
+    <div class="segment-card">
+      <div class="segment-icon">🏗️</div>
+      <h3>Building &amp; Infrastructure</h3>
+      <div class="segment-share">~30% of group revenue</div>
+      <p>Wavin is one of Europe and emerging Asia's largest PVC and PE pipe system manufacturers. Core end-markets include water management, sanitation, and construction — highly exposed to infrastructure spending cycles.</p>
+    </div>
+    <div class="segment-card">
+      <div class="segment-icon">🌾</div>
+      <h3>Precision Agriculture</h3>
+      <div class="segment-share">~20% of group revenue</div>
+      <p>Netafim, the Israeli pioneer of drip irrigation, was acquired in 2018. Operates in 110 countries. Critical supplier to water-stressed agricultural markets in India, Sub-Saharan Africa, Brazil, and MENA.</p>
+    </div>
+    <div class="segment-card">
+      <div class="segment-icon">⚗️</div>
+      <h3>Fluor &amp; Energy Materials</h3>
+      <div class="segment-share">~15% of group revenue</div>
+      <p>Koura produces fluorspar, hydrofluoric acid, refrigerant gases, and lithium hexafluorophosphate (LiPF₆) — a critical input for lithium-ion battery electrolytes. Positioned as a key beneficiary of the EV supply chain build-out.</p>
+    </div>
+    <div class="segment-card">
+      <div class="segment-icon">📡</div>
+      <h3>Data Infrastructure</h3>
+      <div class="segment-share">~10% of group revenue</div>
+      <p>Dura-Line manufactures HDPE conduit for fibre optic networks. Revenues tied to broadband infrastructure rollout in the US, India, and Latin America — a structural growth driver independent of commodity cycles.</p>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT CONSIDERATIONS -->
+<section class="considerations" id="considerations">
+  <div class="section-label">Investment Considerations</div>
+  <h2>Bull &amp; Bear Case</h2>
+  <p class="section-intro">Key factors shaping the risk-return profile for investors analysing Orbia across its listed and credit instruments.</p>
+  <div class="considerations-grid">
+    <div class="consideration-card bull">
+      <h4>Bull Case</h4>
+      <ul>
+        <li>Koura's LiPF₆ capacity positions Orbia as a rare EM-listed pure-play on battery electrolyte demand growth.</li>
+        <li>Netafim benefits from irreversible water scarcity tailwinds across emerging markets; pricing power remains strong.</li>
+        <li>Wavin's exposure to European infrastructure retrofit spending (leak reduction, stormwater management) is growing.</li>
+        <li>Dura-Line fibre conduit demand supported by multi-year broadband subsidy programmes in the US and India.</li>
+        <li>Diversified group structure reduces single-commodity margin volatility vs. pure petrochemical peers.</li>
+      </ul>
+    </div>
+    <div class="consideration-card bear">
+      <h4>Bear Case</h4>
+      <ul>
+        <li>PVC price weakness and Chinese polymer competition squeezes Polymer Solutions and Wavin margins.</li>
+        <li>High leverage relative to EBITDA limits financial flexibility; refinancing risk in a higher-for-longer rate environment.</li>
+        <li>Kaluz Group's controlling stake limits corporate governance upside and minority shareholder rights.</li>
+        <li>Netafim integration complexity and capital intensity weigh on group ROCE.</li>
+        <li>MXN depreciation risk amplifies USD debt servicing costs for the Mexico-listed entity.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- REPORTS -->
+<section class="reports" id="reports">
+  <div class="reports-header">
+    <div>
+      <div class="section-label">Featured Research</div>
+      <h2>Latest Orbia Reports</h2>
+    </div>
+    <a href="index.html#pricing" class="btn-secondary" style="border-color: var(--teal); color: var(--teal-light); white-space: nowrap;">View All Reports →</a>
+  </div>
+  <div class="reports-grid">
+    <div class="report-card">
+      <div class="report-header">
+        <div class="report-tag">Equity</div>
+        <h3>Orbia 2025 Annual Review: Koura's Battery Pivot and the PVC Drag</h3>
+      </div>
+      <div class="report-body">
+        <div class="report-meta">
+          <span>📍 Mexico / Global</span>
+          <span>🗓 Feb 2026</span>
+          <span>📄 52 pages</span>
+        </div>
+        <p>Full-year results analysis: Koura LiPF₆ ramp-up progress, Wavin margin recovery, Netafim order book, and our revised 12-month price target.</p>
+        <a href="index.html#pricing" class="report-link">Read Report →</a>
+      </div>
+    </div>
+    <div class="report-card">
+      <div class="report-header">
+        <div class="report-tag">Thematic</div>
+        <h3>Koura Deep-Dive: Orbia's Battery Materials Optionality in the EV Transition</h3>
+      </div>
+      <div class="report-body">
+        <div class="report-meta">
+          <span>📍 Global</span>
+          <span>🗓 Nov 2025</span>
+          <span>📄 38 pages</span>
+        </div>
+        <p>Sizing the LiPF₆ market opportunity, mapping Koura's competitive position vs. Asian producers, and stress-testing margin assumptions under three EV adoption scenarios.</p>
+        <a href="index.html#pricing" class="report-link">Read Report →</a>
+      </div>
+    </div>
+    <div class="report-card">
+      <div class="report-header">
+        <div class="report-tag">Credit</div>
+        <h3>Orbia Bond Outlook: Refinancing Risk, Covenant Headroom, and Liquidity Analysis</h3>
+      </div>
+      <div class="report-body">
+        <div class="report-meta">
+          <span>📍 Mexico</span>
+          <span>🗓 Sep 2025</span>
+          <span>📄 28 pages</span>
+        </div>
+        <p>Assessment of Orbia's USD bond maturity profile, net leverage trajectory, and covenant headroom — with sensitivity analysis under base, stress, and recovery scenarios.</p>
+        <a href="index.html#pricing" class="report-link">Read Report →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Access the Full Orbia Research Library</h2>
+  <p>Equity notes, credit analysis, thematic deep-dives, and real-time alerts on Orbia and 500+ other EM companies — all in one platform.</p>
+  <a href="index.html#pricing" class="btn-primary">Get 14 Days Free →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a class="nav-logo" href="index.html" style="display:inline-flex; margin-bottom: 0;">
+        <div class="nav-logo-icon" style="width:32px;height:32px;font-size:16px;">📚</div>
+        <div class="nav-logo-text" style="margin-left:10px;">EMRL <span>Research</span></div>
+      </a>
+      <p>The world's most comprehensive library for emerging and frontier market research. Powering institutional investment decisions since 2014.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Platform</h4>
+      <ul>
+        <li><a href="#">Reports Library</a></li>
+        <li><a href="#">Market Data</a></li>
+        <li><a href="#">Alerts</a></li>
+        <li><a href="#">API Docs</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Regions</h4>
+      <ul>
+        <li><a href="#">Africa</a></li>
+        <li><a href="#">Southeast Asia</a></li>
+        <li><a href="#">Latin America</a></li>
+        <li><a href="#">MENA</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Emerging Market Research Library. All rights reserved.</p>
+    <p>research@emrl.com · +1 (212) 555-0147</p>
+  </div>
+</footer>
+
+</body>
+</html>
