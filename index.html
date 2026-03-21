@@ -308,6 +308,48 @@
       letter-spacing: 0.5px;
     }
 
+    /* ── INDUSTRIES ── */
+    .industries { background: var(--navy); }
+    .industries-header { margin-bottom: 48px; }
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .industry-card {
+      background: var(--gray-light);
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 10px;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      cursor: default;
+    }
+    .industry-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 28px rgba(124,58,237,0.2);
+    }
+    .industry-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+    }
+    .industry-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      line-height: 1.3;
+    }
+    .industry-card span {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: var(--teal-light);
+      letter-spacing: 0.3px;
+    }
+
     /* ── REPORTS ── */
     .reports { background: var(--gray-light); }
     .reports-header {
@@ -756,6 +798,62 @@
       <h3>Latam</h3>
       <p>Brazil, Mexico, Colombia, Peru, Chile, Argentina — established and frontier opportunities across Latin America.</p>
       <span class="region-count">18 countries · 2,200+ reports</span>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="industries" id="industries">
+  <div class="industries-header">
+    <div class="section-label">Sector Coverage</div>
+    <h2>Industries We Cover</h2>
+    <p class="section-intro">Deep-dive research across the sectors that drive emerging market economies.</p>
+  </div>
+  <div class="industries-grid">
+    <div class="industry-card">
+      <div class="industry-icon">🛢️</div>
+      <h3>Oil &amp; Gas</h3>
+      <span>Upstream · Midstream · LNG</span>
+    </div>
+    <div class="industry-card">
+      <div class="industry-icon">⛏️</div>
+      <h3>Metals &amp; Mining</h3>
+      <span>Base metals · Precious · Critical minerals</span>
+    </div>
+    <div class="industry-card">
+      <div class="industry-icon">📡</div>
+      <h3>TMT</h3>
+      <span>Telecom · Media · Technology</span>
+    </div>
+    <div class="industry-card">
+      <div class="industry-icon">🛍️</div>
+      <h3>Consumer</h3>
+      <span>Retail · FMCG · E-commerce</span>
+    </div>
+    <div class="industry-card">
+      <div class="industry-icon">⚡</div>
+      <h3>Utilities</h3>
+      <span>Power · Water · Renewables</span>
+    </div>
+    <div class="industry-card">
+      <div class="industry-icon">🏦</div>
+      <h3>Financials</h3>
+      <span>Banking · Insurance · Fintech</span>
+    </div>
+    <div class="industry-card">
+      <div class="industry-icon">🧪</div>
+      <h3>Petrochemicals</h3>
+      <span>Refining · Plastics · Fertilizers</span>
+    </div>
+    <div class="industry-card">
+      <div class="industry-icon">🚢</div>
+      <h3>Transportation</h3>
+      <span>Ports · Logistics · Aviation</span>
+    </div>
+    <div class="industry-card">
+      <div class="industry-icon">🏗️</div>
+      <h3>Infrastructure</h3>
+      <span>Roads · Rail · Smart cities</span>
     </div>
   </div>
 </section>
