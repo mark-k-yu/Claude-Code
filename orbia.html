@@ -402,9 +402,128 @@
     }
     .footer-bottom p { font-family: 'Arial', sans-serif; font-size: 0.82rem; }
 
+    /* ── TACTICAL VIEW ── */
+    .tactical { background: var(--navy); }
+    .tactical-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 36px;
+    }
+    .tactical-card {
+      background: var(--gray-light);
+      border-radius: 10px; padding: 28px 24px;
+    }
+    .tactical-card.upside { border-top: 3px solid var(--gold); }
+    .tactical-card.downside { border-top: 3px solid #ef4444; }
+    .tactical-card h4 {
+      font-size: 0.85rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-bottom: 14px;
+    }
+    .tactical-card.upside h4 { color: var(--gold); }
+    .tactical-card.downside h4 { color: #ef4444; }
+    .tactical-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .tactical-card li {
+      font-family: 'Arial', sans-serif; font-size: 0.84rem;
+      color: rgba(255,255,255,0.65); line-height: 1.5;
+      padding-left: 18px; position: relative;
+    }
+    .tactical-card.upside li::before { content: '▲'; position: absolute; left: 0; color: var(--gold); font-size: 0.65rem; top: 3px; }
+    .tactical-card.downside li::before { content: '▼'; position: absolute; left: 0; color: #ef4444; font-size: 0.65rem; top: 3px; }
+
+    .pvc-spotlight {
+      background: linear-gradient(135deg, rgba(6,214,160,0.08), rgba(6,214,160,0.03));
+      border: 1px solid rgba(6,214,160,0.25);
+      border-radius: 12px; padding: 28px 28px 24px;
+      margin-bottom: 36px;
+    }
+    .pvc-spotlight-header {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 14px;
+    }
+    .pvc-badge {
+      background: rgba(6,214,160,0.18); color: var(--gold);
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 12px; white-space: nowrap;
+    }
+    .pvc-spotlight h3 { font-size: 1.05rem; font-weight: 700; }
+    .pvc-spotlight p {
+      font-family: 'Arial', sans-serif; font-size: 0.88rem;
+      color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 12px;
+    }
+    .pvc-spotlight p:last-child { margin-bottom: 0; }
+    .pvc-metrics {
+      display: flex; gap: 32px; flex-wrap: wrap;
+      margin-top: 18px; padding-top: 18px;
+      border-top: 1px solid rgba(6,214,160,0.15);
+    }
+    .pvc-metric-label {
+      font-family: 'Arial', sans-serif; font-size: 0.75rem;
+      color: rgba(255,255,255,0.45); text-transform: uppercase;
+      letter-spacing: 0.8px; margin-top: 3px;
+    }
+    .pvc-metric-val { font-size: 1.3rem; font-weight: 700; color: var(--gold); }
+
+    /* ── STRATEGIC VIEW ── */
+    .strategic { background: var(--cream); }
+    .swot-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+    }
+    .swot-card {
+      background: var(--gray-light);
+      border-radius: 10px; padding: 26px 22px;
+    }
+    .swot-card h4 {
+      font-size: 0.85rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 14px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .swot-card.strengths { border-left: 3px solid var(--gold); }
+    .swot-card.weaknesses { border-left: 3px solid #ef4444; }
+    .swot-card.opportunities { border-left: 3px solid #60a5fa; }
+    .swot-card.threats { border-left: 3px solid #fb923c; }
+    .swot-card.strengths h4 { color: var(--gold); }
+    .swot-card.weaknesses h4 { color: #ef4444; }
+    .swot-card.opportunities h4 { color: #60a5fa; }
+    .swot-card.threats h4 { color: #fb923c; }
+    .swot-card ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .swot-card li {
+      font-family: 'Arial', sans-serif; font-size: 0.84rem;
+      color: rgba(255,255,255,0.65); line-height: 1.5;
+      padding-left: 16px; position: relative;
+    }
+    .swot-card.strengths li::before { content: '+'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
+    .swot-card.weaknesses li::before { content: '−'; position: absolute; left: 0; color: #ef4444; font-weight: 700; }
+    .swot-card.opportunities li::before { content: '◆'; position: absolute; left: 0; color: #60a5fa; font-size: 0.6rem; top: 4px; }
+    .swot-card.threats li::before { content: '⚠'; position: absolute; left: 0; color: #fb923c; font-size: 0.7rem; }
+
+    .strategic-horizon {
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;
+      margin-top: 44px;
+    }
+    .horizon-card {
+      background: var(--gray-light);
+      border: 1px solid rgba(124,58,237,0.18);
+      border-radius: 10px; padding: 24px 20px;
+    }
+    .horizon-label {
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      margin-bottom: 10px; font-weight: 700;
+    }
+    .horizon-card.near .horizon-label { color: var(--gold); }
+    .horizon-card.mid .horizon-label { color: #60a5fa; }
+    .horizon-card.long .horizon-label { color: var(--teal-light); }
+    .horizon-card h4 { font-size: 0.92rem; font-weight: 700; margin-bottom: 10px; }
+    .horizon-card p {
+      font-family: 'Arial', sans-serif; font-size: 0.83rem;
+      color: rgba(255,255,255,0.57); line-height: 1.6;
+    }
+
     @media (max-width: 900px) {
       .overview-grid { grid-template-columns: 1fr; }
       .considerations-grid { grid-template-columns: 1fr; }
+      .tactical-grid { grid-template-columns: 1fr; }
+      .swot-grid { grid-template-columns: 1fr; }
+      .strategic-horizon { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -426,10 +545,10 @@
     <div class="nav-logo-text">EMRL <span>Research</span></div>
   </a>
   <ul class="nav-links">
-    <li><a href="index.html#features">Features</a></li>
-    <li><a href="index.html#regions">Regions</a></li>
-    <li><a href="index.html#reports">Reports</a></li>
-    <li><a href="index.html#pricing">Pricing</a></li>
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#financials">Financials</a></li>
+    <li><a href="#tactical">Tactical</a></li>
+    <li><a href="#strategic">Strategic</a></li>
     <li><a href="index.html#pricing" class="nav-cta">Get Access</a></li>
   </ul>
 </nav>
@@ -739,6 +858,129 @@
         <li>Netafim integration complexity and capital intensity weigh on group ROCE.</li>
         <li>MXN depreciation risk amplifies USD debt servicing costs for the Mexico-listed entity.</li>
       </ul>
+    </div>
+  </div>
+</section>
+
+<!-- TACTICAL VIEW -->
+<section class="tactical" id="tactical">
+  <div class="section-label">Tactical View</div>
+  <h2>Near-Term Risk &amp; Opportunity</h2>
+  <p class="section-intro">A 0–12 month lens on the key catalysts, price signals, and macro variables most likely to move Orbia's equity and credit instruments in the near term.</p>
+
+  <!-- PVC Spread Spotlight -->
+  <div class="pvc-spotlight">
+    <div class="pvc-spotlight-header">
+      <span class="pvc-badge">⚡ Active Catalyst</span>
+      <h3>Spiking PVC Spreads — A Tailwind for Orbia</h3>
+    </div>
+    <p>PVC-ethylene spreads have widened materially in Q1 2026, driven by a combination of tighter ethylene supply (planned cracker maintenance in the US Gulf Coast), a modest recovery in construction demand in Europe, and slower-than-expected restocking of Chinese export volumes. This is directly positive for Orbia's two most PVC-exposed divisions.</p>
+    <p><strong>Polymer Solutions (Vestolit &amp; Alphagary):</strong> As an integrated PVC compounder, wider spreads between finished compound pricing and raw PVC resin input costs expand Vestolit's per-tonne margins. Management has previously guided that a $50/tonne improvement in PVC spread contributes approximately $40–50M to annual EBITDA.</p>
+    <p><strong>Building &amp; Infrastructure (Wavin):</strong> Wavin purchases PVC resin as its primary raw material. When spreads spike because of supply disruption (rather than demand collapse), Wavin can typically pass through list price increases to distributors on a 4–8 week lag — temporarily boosting per-unit margin before input cost re-widening.</p>
+    <div class="pvc-metrics">
+      <div>
+        <div class="pvc-metric-val">~$50M</div>
+        <div class="pvc-metric-label">Estimated EBITDA uplift per $50/t spread expansion</div>
+      </div>
+      <div>
+        <div class="pvc-metric-val">~55%</div>
+        <div class="pvc-metric-label">Group revenue exposed to PVC value chain</div>
+      </div>
+      <div>
+        <div class="pvc-metric-val">4–8 wk</div>
+        <div class="pvc-metric-label">Typical price pass-through lag (Wavin)</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="tactical-grid">
+    <div class="tactical-card upside">
+      <h4>▲ Near-Term Upside Risks</h4>
+      <ul>
+        <li>PVC spread expansion continuing into Q2 2026 as cracker maintenance season coincides with seasonal European construction demand recovery.</li>
+        <li>Wavin backlog conversion accelerating — any pull-forward of European infrastructure capex (e.g., EU cohesion fund disbursements) would boost pipe system revenues.</li>
+        <li>Koura refrigerant gas pricing remains elevated amid HFO transition regulations; near-term pricing remains above mid-cycle.</li>
+        <li>Potential MXN stabilisation or appreciation reduces USD debt-servicing cost perception for domestic investors.</li>
+        <li>Dura-Line order visibility improving as US broadband funding (BEAD programme) moves from allocation to active deployment.</li>
+      </ul>
+    </div>
+    <div class="tactical-card downside">
+      <h4>▼ Near-Term Downside Risks</h4>
+      <ul>
+        <li>Chinese PVC export re-acceleration — any resumption of aggressive Chinese polymer exports would compress spreads and Polymer Solutions margins rapidly.</li>
+        <li>Macro deterioration in Europe or EM could trigger construction project deferrals, hitting Wavin revenue guidance.</li>
+        <li>Higher-for-longer US rates increasing Orbia's USD interest burden — the company carries ~$5B gross debt, predominantly dollar-denominated.</li>
+        <li>MXN depreciation vs. USD increasing local currency debt servicing costs and compressing consolidated earnings when translated.</li>
+        <li>Netafim project delays in India or Africa — large turnkey contracts can slip quarters due to permitting or funding delays.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIC VIEW -->
+<section class="strategic" id="strategic">
+  <div class="section-label">Strategic View</div>
+  <h2>Mid- to Long-Term Outlook &amp; SWOT</h2>
+  <p class="section-intro">A multi-year assessment of Orbia's competitive positioning, structural growth drivers, and key vulnerabilities. Horizon: 1–5 years and beyond.</p>
+
+  <div class="swot-grid">
+    <div class="swot-card strengths">
+      <h4>💪 Strengths</h4>
+      <ul>
+        <li>Integrated PVC value chain from chlorine/ethylene through compounding and pipe systems — structural cost advantage vs. standalone processors.</li>
+        <li>Netafim's global brand and technology leadership in drip irrigation; high switching costs and recurring service revenue.</li>
+        <li>Koura's unique fluorspar mining assets in Mexico provide a vertically integrated feedstock position for HF and LiPF₆ — a scarce competitive moat.</li>
+        <li>Diversified geographic footprint across 100+ countries reduces single-market concentration risk vs. EM peers.</li>
+        <li>Proven capital allocation track record through acquisitions (Netafim, Dura-Line) that expanded beyond commodity chemicals into structural growth verticals.</li>
+      </ul>
+    </div>
+    <div class="swot-card weaknesses">
+      <h4>⚠ Weaknesses</h4>
+      <ul>
+        <li>Elevated gross leverage (~4.4x EBITDA) limits M&amp;A optionality and increases vulnerability to earnings downturns.</li>
+        <li>Kaluz Group's controlling stake constrains governance reform and minority shareholder influence — a persistent discount factor.</li>
+        <li>Conglomerate complexity makes segment-level valuation opaque; sum-of-the-parts discount is structurally embedded in the share price.</li>
+        <li>Netafim integration has been slower than expected; ROCE for the division remains below cost of capital on some estimates.</li>
+        <li>BMV listing limits foreign institutional access vs. NYSE/LSE-listed peers; lower liquidity amplifies volatility.</li>
+      </ul>
+    </div>
+    <div class="swot-card opportunities">
+      <h4>◆ Opportunities</h4>
+      <ul>
+        <li>Koura LiPF₆ capacity expansion timed to intercept EV battery supply chain build-out; structural demand growth of 25–30% CAGR through 2030.</li>
+        <li>Global water scarcity intensification structurally expands Netafim's addressable market — smart irrigation adoption is still sub-10% of global irrigated area.</li>
+        <li>EU and US infrastructure legislation (IRA, Green Deal) driving multi-year capex tailwinds for Wavin pipe systems and Dura-Line fibre conduit.</li>
+        <li>Potential partial IPO or strategic sale of Netafim could crystallise significant embedded value and accelerate deleveraging.</li>
+        <li>Emerging market urbanisation driving decades-long demand growth for water management, sanitation infrastructure, and broadband connectivity.</li>
+      </ul>
+    </div>
+    <div class="swot-card threats">
+      <h4>🔴 Threats</h4>
+      <ul>
+        <li>Chinese PVC overcapacity structurally challenging — new Chinese capacity additions continue to pressure global PVC prices on a 3–5 year view.</li>
+        <li>EV adoption slowdown or battery chemistry shift (e.g., LFP replacing NMC) could reduce LiPF₆ demand growth and impair Koura's capital programme.</li>
+        <li>Climate change increasing water scarcity faster than infrastructure can adapt — but also creating political risk around water pricing and expropriation in EM markets.</li>
+        <li>Escalating trade tariffs (US-Mexico under USMCA renegotiation risk) could disrupt North American chemical supply chains that Orbia participates in.</li>
+        <li>Refinancing risk — significant bond maturities over 2026–2028 in a structurally higher interest rate environment could increase cost of capital.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="strategic-horizon">
+    <div class="horizon-card near">
+      <div class="horizon-label">1–2 Years</div>
+      <h4>Deleveraging &amp; Spread Recovery</h4>
+      <p>Priority focus on free cash flow conversion and net debt reduction toward 3.5x EBITDA. PVC spread normalisation and Wavin margin recovery are the primary earnings recovery drivers. Koura LiPF₆ ramp-up begins contributing incremental EBITDA.</p>
+    </div>
+    <div class="horizon-card mid">
+      <div class="horizon-label">2–4 Years</div>
+      <h4>Koura Monetisation &amp; Portfolio Refinement</h4>
+      <p>Koura's battery materials business reaches meaningful scale. Management may evaluate strategic options (partial IPO, JV, trade sale) to surface value. Netafim growth in Asia and Africa accelerates. Broadband infrastructure spending underpins Dura-Line revenue.</p>
+    </div>
+    <div class="horizon-card long">
+      <div class="horizon-label">4–7 Years</div>
+      <h4>Structural Re-Rating or Portfolio Reset</h4>
+      <p>Orbia's long-term equity value depends on whether Koura becomes a recognised battery materials platform and whether Netafim's irrigation technology leadership compounds in an increasingly water-stressed world. A successful restructuring toward higher-quality, lower-cyclicality earnings could drive significant multiple expansion.</p>
     </div>
   </div>
 </section>
