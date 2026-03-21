@@ -288,6 +288,83 @@
       line-height: 1.55;
     }
 
+    /* ── COMPANIES ── */
+    .companies { background: var(--cream); }
+    .companies-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .company-card {
+      background: var(--gray-light);
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 10px;
+      padding: 26px 24px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .company-card:hover {
+      border-color: var(--teal);
+      transform: translateY(-3px);
+    }
+    .company-card-top {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+    .company-initials {
+      width: 46px; height: 46px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, var(--teal), #4c1d95);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .company-hq {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.45);
+      text-align: right;
+    }
+    .company-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .company-sub-sector {
+      display: inline-block;
+      background: rgba(6,214,160,0.12);
+      color: var(--gold);
+      font-family: 'Arial', sans-serif;
+      font-size: 0.7rem;
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      padding: 2px 9px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+    }
+    .company-card p {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.83rem;
+      color: rgba(255,255,255,0.58);
+      line-height: 1.55;
+      margin-bottom: 16px;
+    }
+    .company-tags {
+      display: flex; flex-wrap: wrap; gap: 6px;
+    }
+    .company-tag {
+      font-family: 'Arial', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(255,255,255,0.5);
+      background: rgba(124,58,237,0.12);
+      border: 1px solid rgba(124,58,237,0.25);
+      padding: 3px 9px;
+      border-radius: 10px;
+    }
+
     /* ── REPORTS ── */
     .reports { background: var(--cream); }
     .reports-header {
@@ -552,6 +629,96 @@
       <h4>Sanctions &amp; Trade Disruption</h4>
       <p>Iran and Russia petrochemical export redirection, grey-market flows, and the secondary sanction exposure for downstream buyers.</p>
     </div>
+  </div>
+</section>
+
+<!-- COMPANIES -->
+<section class="companies" id="companies">
+  <div class="section-label">Company Coverage</div>
+  <h2>Key Companies We Track</h2>
+  <p class="section-intro">In-depth profiling of the listed and private operators shaping petrochemical markets across emerging economies.</p>
+  <div class="companies-grid">
+
+    <div class="company-card">
+      <div class="company-card-top">
+        <div class="company-initials">ORB</div>
+        <div class="company-hq">🇲🇽 Mexico</div>
+      </div>
+      <h3>Orbia</h3>
+      <div class="company-sub-sector">Plastics &amp; Polymers</div>
+      <p>Global specialty chemicals and polymer solutions company. Orbia's Fluor &amp; Energy Materials and Polymer Solutions segments are key growth drivers across Latin America, Europe, and the US.</p>
+      <div class="company-tags">
+        <span class="company-tag">PVC</span>
+        <span class="company-tag">Fluorochemicals</span>
+        <span class="company-tag">Agtech</span>
+        <span class="company-tag">Datacom</span>
+      </div>
+    </div>
+
+    <div class="company-card">
+      <div class="company-card-top">
+        <div class="company-initials">ALK</div>
+        <div class="company-hq">🇲🇽 Mexico</div>
+      </div>
+      <h3>Alpek</h3>
+      <div class="company-sub-sector">Olefins &amp; Aromatics</div>
+      <p>Leading polyester and plastics producer, with integrated PTA and PET assets across Mexico, the US, and South America. Key beneficiary of nearshoring and packaging demand trends.</p>
+      <div class="company-tags">
+        <span class="company-tag">PTA</span>
+        <span class="company-tag">PET</span>
+        <span class="company-tag">EPS</span>
+        <span class="company-tag">Caprolactam</span>
+      </div>
+    </div>
+
+    <div class="company-card">
+      <div class="company-card-top">
+        <div class="company-initials">BAK</div>
+        <div class="company-hq">🇧🇷 Brazil</div>
+      </div>
+      <h3>Braskem</h3>
+      <div class="company-sub-sector">Plastics &amp; Polymers</div>
+      <p>Latin America's largest petrochemical company and one of the world's top polyolefin producers. Faces ongoing restructuring and deleveraging pressure following the Alagoas geological crisis.</p>
+      <div class="company-tags">
+        <span class="company-tag">Polyethylene</span>
+        <span class="company-tag">Polypropylene</span>
+        <span class="company-tag">PVC</span>
+        <span class="company-tag">Biopolymers</span>
+      </div>
+    </div>
+
+    <div class="company-card">
+      <div class="company-card-top">
+        <div class="company-initials">TOP</div>
+        <div class="company-hq">🇹🇭 Thailand</div>
+      </div>
+      <h3>Thai Oil</h3>
+      <div class="company-sub-sector">Refining</div>
+      <p>Thailand's largest refiner, majority-owned by PTT. Executing the Clean Fuel Project to upgrade complex refinery capacity and expand aromatics and lube base oil output for ASEAN markets.</p>
+      <div class="company-tags">
+        <span class="company-tag">Refining</span>
+        <span class="company-tag">Aromatics</span>
+        <span class="company-tag">Lube Oils</span>
+        <span class="company-tag">Power</span>
+      </div>
+    </div>
+
+    <div class="company-card">
+      <div class="company-card-top">
+        <div class="company-initials">SOL</div>
+        <div class="company-hq">🇿🇦 South Africa</div>
+      </div>
+      <h3>Sasol</h3>
+      <div class="company-sub-sector">Specialty Chemicals</div>
+      <p>Unique coal-and-gas-to-liquids operator with integrated chemicals production. Sasol's ORYX GTL joint venture in Qatar and its South African synfuels operations make it a bellwether for alternative feedstock economics.</p>
+      <div class="company-tags">
+        <span class="company-tag">GTL</span>
+        <span class="company-tag">Synfuels</span>
+        <span class="company-tag">Solvents</span>
+        <span class="company-tag">Waxes</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
