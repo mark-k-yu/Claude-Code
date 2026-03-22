@@ -697,6 +697,69 @@
       border-top: 1px solid rgba(255,255,255,0.07);
       padding-top: 20px; margin-top: 8px;
     }
+    /* ── EBITDA FORECAST TABLE ── */
+    .ebitda-table-wrap {
+      margin: 36px 0 0; background: var(--gray-light);
+      border: 1px solid rgba(255,255,255,0.07); border-radius: 12px; overflow: hidden;
+    }
+    .ebitda-table-header {
+      padding: 20px 24px 16px; border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap;
+    }
+    .ebitda-table-header h4 {
+      font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: rgba(255,255,255,0.55);
+    }
+    .ebitda-table-header span {
+      font-family: 'Arial', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.28);
+    }
+    .ebitda-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .ebitda-tbl {
+      width: 100%; min-width: 680px; border-collapse: collapse;
+      font-family: 'Arial', sans-serif; font-size: 0.83rem;
+    }
+    .ebitda-tbl thead tr { border-bottom: 2px solid rgba(124,58,237,0.3); }
+    .ebitda-tbl thead th {
+      padding: 12px 18px; text-align: right; font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.8px; color: rgba(255,255,255,0.4);
+    }
+    .ebitda-tbl thead th:first-child { text-align: left; }
+    .ebitda-tbl thead th.actual { color: rgba(255,255,255,0.55); }
+    .ebitda-tbl thead th.est { color: var(--teal-light); }
+    .ebitda-tbl tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.05); transition: background 0.15s;
+    }
+    .ebitda-tbl tbody tr:hover { background: rgba(124,58,237,0.07); }
+    .ebitda-tbl tbody tr.company-path {
+      border-top: 1px solid rgba(6,214,160,0.15); background: rgba(6,214,160,0.03);
+    }
+    .ebitda-tbl tbody tr.street-row {
+      border-top: 1px solid rgba(255,255,255,0.1); background: rgba(124,58,237,0.06);
+    }
+    .ebitda-tbl td { padding: 12px 18px; text-align: right; color: rgba(255,255,255,0.75); }
+    .ebitda-tbl td:first-child { text-align: left; }
+    .broker-col { display: flex; flex-direction: column; gap: 3px; }
+    .broker-col-name { font-weight: 700; color: var(--white); white-space: nowrap; }
+    .broker-col-badge {
+      display: inline-block; font-size: 0.65rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      padding: 2px 7px; border-radius: 8px; white-space: nowrap; width: fit-content;
+    }
+    .broker-col-badge.buy { background: rgba(6,214,160,0.15); color: var(--gold); }
+    .broker-col-badge.neutral { background: rgba(251,146,60,0.15); color: #fb923c; }
+    .broker-col-badge.hold { background: rgba(251,146,60,0.15); color: #fb923c; }
+    .broker-col-badge.outperform { background: rgba(6,214,160,0.15); color: var(--gold); }
+    .ebitda-tbl td.actual-val { color: rgba(255,255,255,0.55); }
+    .ebitda-tbl td.est-val { color: var(--white); font-weight: 600; }
+    .ebitda-tbl td.company-val { color: var(--gold); font-weight: 600; }
+    .ebitda-tbl td.vs-street { font-size: 0.77rem; font-weight: 700; }
+    .ebitda-tbl td.vs-street.above { color: var(--gold); }
+    .ebitda-tbl td.vs-street.below { color: #ef4444; }
+    .ebitda-tbl td.vs-street.inline { color: rgba(255,255,255,0.35); }
+    .ebitda-tbl tfoot td {
+      padding: 10px 18px; font-size: 0.73rem;
+      color: rgba(255,255,255,0.28); border-top: 1px solid rgba(255,255,255,0.07);
+    }
     @media (max-width: 900px) { .consensus-summary { grid-template-columns: 1fr; } }
 
     /* ── STRATEGIC VIEW ── */
@@ -1536,6 +1599,111 @@
     </div>
 
   </div><!-- end broker-grid -->
+
+  <!-- EBITDA Forecast Table -->
+  <div class="ebitda-table-wrap">
+    <div class="ebitda-table-header">
+      <h4>EBITDA Forecasts by Broker</h4>
+      <span>USD millions · Adjusted EBITDA · 2026E–2027E derived from public research summaries and guidance path</span>
+    </div>
+    <div class="ebitda-scroll">
+      <table class="ebitda-tbl">
+        <thead>
+          <tr>
+            <th style="min-width:160px;">Broker</th>
+            <th class="actual">2023A</th>
+            <th class="actual">2024A</th>
+            <th class="actual">2025A</th>
+            <th class="est">2026E</th>
+            <th class="est">2027E</th>
+            <th class="est" style="min-width:110px;">vs. Street 2026E</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="broker-col">
+                <span class="broker-col-name">GBM</span>
+                <span class="broker-col-badge outperform">Outperform · PT MXN$46</span>
+              </div>
+            </td>
+            <td class="actual-val">$1,247</td>
+            <td class="actual-val">$1,194</td>
+            <td class="actual-val">$1,110</td>
+            <td class="est-val">$1,230</td>
+            <td class="est-val">$1,450</td>
+            <td class="vs-street above">+$125 / +11%</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="broker-col">
+                <span class="broker-col-name">Citibanamex</span>
+                <span class="broker-col-badge hold">Hold · PT MXN$30</span>
+              </div>
+            </td>
+            <td class="actual-val">$1,247</td>
+            <td class="actual-val">$1,194</td>
+            <td class="actual-val">$1,110</td>
+            <td class="est-val">$1,080</td>
+            <td class="est-val">$1,240</td>
+            <td class="vs-street below">−$25 / −2%</td>
+          </tr>
+          <tr>
+            <td>
+              <div class="broker-col">
+                <span class="broker-col-name">JPMorgan</span>
+                <span class="broker-col-badge neutral">Neutral ↓ · PT MXN$20</span>
+              </div>
+            </td>
+            <td class="actual-val">$1,247</td>
+            <td class="actual-val">$1,194</td>
+            <td class="actual-val">$1,110</td>
+            <td class="est-val">$1,010</td>
+            <td class="est-val">$1,175</td>
+            <td class="vs-street below">−$95 / −9%</td>
+          </tr>
+          <tr class="street-row">
+            <td>
+              <div class="broker-col">
+                <span class="broker-col-name">Street Consensus</span>
+                <span class="broker-col-badge buy">Buy · Avg PT MXN$28.73</span>
+              </div>
+            </td>
+            <td class="actual-val">$1,247</td>
+            <td class="actual-val">$1,194</td>
+            <td class="actual-val">$1,110</td>
+            <td class="est-val">$1,105</td>
+            <td class="est-val">$1,295</td>
+            <td class="vs-street inline">— consensus</td>
+          </tr>
+          <tr class="company-path">
+            <td>
+              <div class="broker-col">
+                <span class="broker-col-name">Company Guidance Path</span>
+                <span style="font-family:'Arial',sans-serif;font-size:0.72rem;color:rgba(255,255,255,0.35);">Oct 2024 · pre-Iran war</span>
+              </div>
+            </td>
+            <td class="actual-val">$1,247</td>
+            <td class="actual-val">$1,194</td>
+            <td class="actual-val">$1,110</td>
+            <td class="company-val">~$1,210†</td>
+            <td class="company-val">~$1,500‡</td>
+            <td class="vs-street above">+$105 / +10%</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="7">
+              2023A–2025A: Orbia official releases (adjusted EBITDA). 2024A derived: 2025A $1,110M ÷ 0.93 (−7% YoY confirmed in Q4 2025 earnings release).
+              2026E–2027E broker estimates are EMRL derivations based on publicly available rating rationales, price targets, and the company's own guidance trajectory — individual broker model outputs are proprietary.
+              † Company guidance (Oct 2024): base + ~$100M incremental; does not account for Iran war feedstock impact from Feb 2026.
+              ‡ Company long-term target independent of market recovery; market recovery could add a further $250–500M.
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </div><!-- end ebitda-table-wrap -->
 
   <p class="consensus-disclaimer">Sources: MarketScreener, Investing.com, GBM Media, Axis Negocios / Citibanamex, TradingView. Price targets and ratings are sourced from publicly available research summaries. EMRL Research has not independently verified these figures. This section is for informational purposes only and does not constitute investment advice. Analyst ratings are subject to change without notice.</p>
 
