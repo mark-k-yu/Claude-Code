@@ -552,6 +552,153 @@
     .tag-mixed { color: #fb923c; font-weight: 700; }
     @media (max-width: 900px) { .war-risk-grid { grid-template-columns: 1fr; } }
 
+    /* ── SELL-SIDE CONSENSUS ── */
+    .consensus { background: var(--cream); }
+    .consensus-summary {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-bottom: 44px;
+    }
+    .consensus-metrics {
+      background: var(--gray-light); border-radius: 12px; padding: 28px 26px;
+      display: flex; flex-direction: column; gap: 22px;
+    }
+    .consensus-metric-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      border-bottom: 1px solid rgba(255,255,255,0.06); padding-bottom: 16px;
+    }
+    .consensus-metric-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .consensus-metric-label {
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 0.8px;
+    }
+    .consensus-metric-val {
+      font-size: 1.25rem; font-weight: 700; color: var(--white);
+    }
+    .consensus-metric-val.green { color: var(--gold); }
+    .consensus-metric-val.red { color: #ef4444; }
+    .consensus-metric-sub {
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      color: rgba(255,255,255,0.35); margin-top: 2px;
+    }
+    .rating-distribution {
+      background: var(--gray-light); border-radius: 12px; padding: 28px 26px;
+    }
+    .rating-distribution h4 {
+      font-size: 0.8rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: rgba(255,255,255,0.45); margin-bottom: 22px;
+    }
+    .rating-bar-wrap { display: flex; flex-direction: column; gap: 14px; }
+    .rating-bar-row { display: flex; align-items: center; gap: 14px; }
+    .rating-bar-label {
+      font-family: 'Arial', sans-serif; font-size: 0.78rem;
+      color: rgba(255,255,255,0.6); width: 40px; text-align: right; flex-shrink: 0;
+    }
+    .rating-bar-track {
+      flex: 1; height: 10px; background: rgba(255,255,255,0.08);
+      border-radius: 6px; overflow: hidden;
+    }
+    .rating-bar-fill { height: 100%; border-radius: 6px; }
+    .rating-bar-fill.buy { background: var(--gold); }
+    .rating-bar-fill.hold { background: #fb923c; }
+    .rating-bar-fill.sell { background: #ef4444; }
+    .rating-bar-count {
+      font-family: 'Arial', sans-serif; font-size: 0.8rem; font-weight: 700;
+      color: rgba(255,255,255,0.7); width: 24px; flex-shrink: 0;
+    }
+    .rating-bar-pct {
+      font-family: 'Arial', sans-serif; font-size: 0.75rem;
+      color: rgba(255,255,255,0.35); width: 36px; flex-shrink: 0;
+    }
+    .pt-range {
+      margin-top: 24px; padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+    .pt-range-label {
+      font-family: 'Arial', sans-serif; font-size: 0.75rem;
+      color: rgba(255,255,255,0.4); text-transform: uppercase;
+      letter-spacing: 0.8px; margin-bottom: 10px;
+    }
+    .pt-range-track {
+      position: relative; height: 6px;
+      background: rgba(255,255,255,0.1); border-radius: 4px; margin-bottom: 10px;
+    }
+    .pt-range-fill {
+      position: absolute; height: 100%; border-radius: 4px;
+      background: linear-gradient(90deg, #ef4444, var(--gold));
+    }
+    .pt-range-current {
+      position: absolute; top: -5px; width: 16px; height: 16px;
+      background: var(--white); border-radius: 50%;
+      border: 3px solid var(--navy);
+      transform: translateX(-50%);
+    }
+    .pt-range-labels {
+      display: flex; justify-content: space-between;
+      font-family: 'Arial', sans-serif; font-size: 0.73rem;
+      color: rgba(255,255,255,0.4);
+    }
+    .broker-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;
+      margin-bottom: 24px;
+    }
+    .broker-card {
+      background: var(--gray-light);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px; padding: 22px 20px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .broker-card:hover { border-color: rgba(124,58,237,0.4); transform: translateY(-2px); }
+    .broker-card-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 14px;
+    }
+    .broker-name {
+      font-size: 0.92rem; font-weight: 700; color: var(--white);
+    }
+    .broker-analyst {
+      font-family: 'Arial', sans-serif; font-size: 0.75rem;
+      color: rgba(255,255,255,0.38); margin-top: 3px;
+    }
+    .broker-rating-badge {
+      font-family: 'Arial', sans-serif; font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 4px 10px; border-radius: 10px; white-space: nowrap;
+    }
+    .broker-rating-badge.buy { background: rgba(6,214,160,0.15); color: var(--gold); }
+    .broker-rating-badge.hold { background: rgba(251,146,60,0.15); color: #fb923c; }
+    .broker-rating-badge.sell { background: rgba(239,68,68,0.15); color: #ef4444; }
+    .broker-rating-badge.outperform { background: rgba(6,214,160,0.15); color: var(--gold); }
+    .broker-rating-badge.neutral { background: rgba(251,146,60,0.15); color: #fb923c; }
+    .broker-pt-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 12px; padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .broker-pt-label {
+      font-family: 'Arial', sans-serif; font-size: 0.75rem;
+      color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.6px;
+    }
+    .broker-pt-val { font-size: 1.1rem; font-weight: 700; color: var(--white); }
+    .broker-pt-upside {
+      font-family: 'Arial', sans-serif; font-size: 0.75rem; font-weight: 700;
+    }
+    .broker-pt-upside.up { color: var(--gold); }
+    .broker-pt-upside.down { color: #ef4444; }
+    .broker-thesis {
+      font-family: 'Arial', sans-serif; font-size: 0.82rem;
+      color: rgba(255,255,255,0.57); line-height: 1.6;
+    }
+    .broker-date {
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      color: rgba(255,255,255,0.28); margin-top: 10px;
+    }
+    .consensus-disclaimer {
+      font-family: 'Arial', sans-serif; font-size: 0.77rem;
+      color: rgba(255,255,255,0.3); line-height: 1.6;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding-top: 20px; margin-top: 8px;
+    }
+    @media (max-width: 900px) { .consensus-summary { grid-template-columns: 1fr; } }
+
     /* ── STRATEGIC VIEW ── */
     .strategic { background: var(--cream); }
     .swot-grid {
@@ -639,6 +786,7 @@
     <li><a href="#financials">Financials</a></li>
     <li><a href="#tactical">Tactical</a></li>
     <li><a href="#strategic">Strategic</a></li>
+    <li><a href="#consensus">Consensus</a></li>
     <li><a href="index.html#pricing" class="nav-cta">Get Access</a></li>
   </ul>
 </nav>
@@ -1215,6 +1363,182 @@
       <p>Orbia's long-term equity value depends on whether Koura becomes a recognised battery materials platform and whether Netafim's irrigation technology leadership compounds in an increasingly water-stressed world. A successful restructuring toward higher-quality, lower-cyclicality earnings could drive significant multiple expansion.</p>
     </div>
   </div>
+</section>
+
+<!-- SELL-SIDE CONSENSUS -->
+<section class="consensus" id="consensus">
+  <div class="section-label">Sell-Side Consensus</div>
+  <h2>Analyst Ratings &amp; Price Targets</h2>
+  <p class="section-intro">Aggregated sell-side ratings, price targets, and key investment theses from analysts covering Orbia on BMV. Based on 10 active covering analysts. Current price: MXN$18.54 (as of Mar 2026).</p>
+
+  <div class="consensus-summary">
+
+    <!-- Left: key metrics -->
+    <div class="consensus-metrics">
+      <div class="consensus-metric-row">
+        <div>
+          <div class="consensus-metric-label">Consensus Rating</div>
+          <div class="consensus-metric-sub">9 Buy · 0 Hold · 1 Sell</div>
+        </div>
+        <div class="consensus-metric-val green">Buy</div>
+      </div>
+      <div class="consensus-metric-row">
+        <div>
+          <div class="consensus-metric-label">Average Price Target</div>
+          <div class="consensus-metric-sub">Based on 10 analysts</div>
+        </div>
+        <div>
+          <div class="consensus-metric-val">MXN$28.73</div>
+        </div>
+      </div>
+      <div class="consensus-metric-row">
+        <div>
+          <div class="consensus-metric-label">Implied Upside</div>
+          <div class="consensus-metric-sub">vs. current price MXN$18.54</div>
+        </div>
+        <div class="consensus-metric-val green">+55%</div>
+      </div>
+      <div class="consensus-metric-row">
+        <div>
+          <div class="consensus-metric-label">52-Week Range</div>
+          <div class="consensus-metric-sub">BMV: ORBIA*</div>
+        </div>
+        <div class="consensus-metric-val">MXN$11.60 – $22.15</div>
+      </div>
+      <div class="consensus-metric-row">
+        <div>
+          <div class="consensus-metric-label">Most Recent Action</div>
+          <div class="consensus-metric-sub">JPMorgan, Mar 2026</div>
+        </div>
+        <div class="consensus-metric-val red" style="font-size:0.9rem;">Downgrade to Neutral</div>
+      </div>
+    </div>
+
+    <!-- Right: rating bar + PT range -->
+    <div class="rating-distribution">
+      <h4>Rating Distribution (10 Analysts)</h4>
+      <div class="rating-bar-wrap">
+        <div class="rating-bar-row">
+          <div class="rating-bar-label">Buy</div>
+          <div class="rating-bar-track"><div class="rating-bar-fill buy" style="width:90%;"></div></div>
+          <div class="rating-bar-count">9</div>
+          <div class="rating-bar-pct">90%</div>
+        </div>
+        <div class="rating-bar-row">
+          <div class="rating-bar-label">Hold</div>
+          <div class="rating-bar-track"><div class="rating-bar-fill hold" style="width:0%;"></div></div>
+          <div class="rating-bar-count">0</div>
+          <div class="rating-bar-pct">0%</div>
+        </div>
+        <div class="rating-bar-row">
+          <div class="rating-bar-label">Sell</div>
+          <div class="rating-bar-track"><div class="rating-bar-fill sell" style="width:10%;"></div></div>
+          <div class="rating-bar-count">1</div>
+          <div class="rating-bar-pct">10%</div>
+        </div>
+      </div>
+      <div class="pt-range">
+        <div class="pt-range-label">Price Target Range</div>
+        <div class="pt-range-track">
+          <!-- range: MXN$13.05 (low) to MXN$46.13 (high), span = 33.08
+               current $18.54 → position = (18.54 - 13.05) / 33.08 = 16.6%
+               avg PT $28.73 → (28.73 - 13.05) / 33.08 = 47.4% -->
+          <div class="pt-range-fill" style="left:0; right:0;"></div>
+          <div class="pt-range-current" style="left:16.6%;" title="Current: MXN$18.54"></div>
+        </div>
+        <div class="pt-range-labels">
+          <span>MXN$13.05 <span style="color:rgba(255,255,255,0.25);">Low</span></span>
+          <span style="color:var(--gold);">▲ Avg MXN$28.73</span>
+          <span>MXN$46.13 <span style="color:rgba(255,255,255,0.25);">High</span></span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end consensus-summary -->
+
+  <!-- Broker cards -->
+  <div class="broker-grid">
+
+    <div class="broker-card">
+      <div class="broker-card-top">
+        <div>
+          <div class="broker-name">GBM</div>
+          <div class="broker-analyst">Equity Research — Mexico</div>
+        </div>
+        <span class="broker-rating-badge outperform">Outperform</span>
+      </div>
+      <div class="broker-pt-row">
+        <div class="broker-pt-label">Price Target</div>
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <div class="broker-pt-val">MXN$46.00</div>
+          <div class="broker-pt-upside up">+148%</div>
+        </div>
+      </div>
+      <p class="broker-thesis">Most bullish on the Street. GBM argues shares trade at 0.5x P/BV — a record-low that permanently prices in the cyclical trough. Key catalysts: $300M EBITDA improvement by 2027 from cost initiatives, dividend suspension freeing ~$160M/yr for deleveraging, and debt maturity push to post-2030. Views risk/reward as skewed sharply to the upside from current levels.</p>
+      <div class="broker-date">Reiterated · 2025</div>
+    </div>
+
+    <div class="broker-card">
+      <div class="broker-card-top">
+        <div>
+          <div class="broker-name">Citibanamex</div>
+          <div class="broker-analyst">Andrés Cardona</div>
+        </div>
+        <span class="broker-rating-badge hold">Hold</span>
+      </div>
+      <div class="broker-pt-row">
+        <div class="broker-pt-label">Price Target</div>
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <div class="broker-pt-val">MXN$30.00</div>
+          <div class="broker-pt-upside up">+62%</div>
+        </div>
+      </div>
+      <p class="broker-thesis">Cut PT 50% following a weak Q3 print. Sees "a slower-than-expected operating cash flow recovery path" — cost-saving gains partly offset by persistent demand weakness, particularly in construction. No near-term market recovery assumed. Watchful on Iran war feedstock impact to Vestolit Marl's naphtha-based cracker and further drag on Wavin volumes.</p>
+      <div class="broker-date">PT reduced · Q4 2025</div>
+    </div>
+
+    <div class="broker-card">
+      <div class="broker-card-top">
+        <div>
+          <div class="broker-name">JPMorgan</div>
+          <div class="broker-analyst">LatAm Chemicals</div>
+        </div>
+        <span class="broker-rating-badge neutral">Neutral</span>
+      </div>
+      <div class="broker-pt-row">
+        <div class="broker-pt-label">Price Target</div>
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <div class="broker-pt-val">MXN$20.00</div>
+          <div class="broker-pt-upside up">+8%</div>
+        </div>
+      </div>
+      <p class="broker-thesis">Downgraded from Overweight to Neutral and cut PT alongside peers in LatAm chemicals. Views the Iran war as a net negative for Orbia — naphtha cost surge for Vestolit Germany and PE spike for Netafim/Dura-Line offset the partial Americas PVC upside. Leverage trajectory and refinancing risk also weigh on near-term equity upside. Sees limited catalyst for re-rating until macro stabilises.</p>
+      <div class="broker-date">Downgraded · Mar 2026</div>
+    </div>
+
+    <div class="broker-card">
+      <div class="broker-card-top">
+        <div>
+          <div class="broker-name">Street Consensus</div>
+          <div class="broker-analyst">10 analysts · Investing.com</div>
+        </div>
+        <span class="broker-rating-badge buy">Buy</span>
+      </div>
+      <div class="broker-pt-row">
+        <div class="broker-pt-label">Average Price Target</div>
+        <div style="display:flex; align-items:baseline; gap:10px;">
+          <div class="broker-pt-val">MXN$28.73</div>
+          <div class="broker-pt-upside up">+55%</div>
+        </div>
+      </div>
+      <p class="broker-thesis">Broad consensus is constructive, with 9 of 10 analysts at Buy/Outperform despite the Iran war shock. The bull case centres on Koura's battery materials optionality, long-cycle Netafim growth, and Orbia's Americas chemical exposure as a structural beneficiary of Middle East supply disruption. The lone Sell reflects concerns over leverage and European chemical headwinds.</p>
+      <div class="broker-date">Aggregated · Mar 2026</div>
+    </div>
+
+  </div><!-- end broker-grid -->
+
+  <p class="consensus-disclaimer">Sources: MarketScreener, Investing.com, GBM Media, Axis Negocios / Citibanamex, TradingView. Price targets and ratings are sourced from publicly available research summaries. EMRL Research has not independently verified these figures. This section is for informational purposes only and does not constitute investment advice. Analyst ratings are subject to change without notice.</p>
+
 </section>
 
 <!-- REPORTS -->
