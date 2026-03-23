@@ -770,7 +770,57 @@
     .ebitda-tbl td.na-val {
       color: rgba(255,255,255,0.25); font-style: italic; font-size: 0.78rem;
     }
-    @media (max-width: 900px) { .consensus-summary { grid-template-columns: 1fr; } }
+    .ebitda-tbl tr.emrl-row { background: rgba(6,214,160,0.05); }
+    .ebitda-tbl tr.emrl-row td { color: var(--white); }
+    .ebitda-tbl tr.emrl-row td.est-val { color: var(--gold); font-weight: 700; }
+    .ebitda-tbl tr.section-divider.emrl-divider td {
+      background: rgba(6,214,160,0.1); color: var(--gold);
+      border-top: 2px solid rgba(6,214,160,0.3); border-bottom: 1px solid rgba(6,214,160,0.2);
+    }
+    /* model bridge callout */
+    .model-bridge {
+      margin-top: 28px;
+      background: linear-gradient(135deg, rgba(6,214,160,0.05), rgba(6,214,160,0.02));
+      border: 1px solid rgba(6,214,160,0.2); border-left: 4px solid var(--gold);
+      border-radius: 10px; padding: 24px 24px 20px;
+    }
+    .model-bridge-header {
+      display: flex; align-items: center; gap: 14px; margin-bottom: 18px;
+    }
+    .model-bridge-header h4 { font-size: 0.9rem; font-weight: 700; }
+    .model-bridge-tag {
+      font-family: 'Arial', sans-serif; font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      background: rgba(6,214,160,0.15); color: var(--gold);
+      padding: 3px 10px; border-radius: 8px;
+    }
+    .bridge-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    }
+    .bridge-col-label {
+      font-family: 'Arial', sans-serif; font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      color: rgba(255,255,255,0.4); margin-bottom: 12px;
+    }
+    .bridge-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 7px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-family: 'Arial', sans-serif; font-size: 0.81rem;
+    }
+    .bridge-row:last-child { border-bottom: none; font-weight: 700; }
+    .bridge-row-label { color: rgba(255,255,255,0.62); }
+    .bridge-row-val { font-weight: 600; white-space: nowrap; }
+    .bridge-row-val.pos { color: var(--gold); }
+    .bridge-row-val.neg { color: #ef4444; }
+    .bridge-row-val.neutral { color: rgba(255,255,255,0.75); }
+    .bridge-row-val.total { color: var(--gold); font-size: 1rem; }
+    .bridge-divider {
+      border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 6px 0;
+    }
+    @media (max-width: 900px) {
+      .consensus-summary { grid-template-columns: 1fr; }
+      .bridge-grid { grid-template-columns: 1fr; }
+    }
 
     /* ── COMMUNITY & INDEPENDENT ANALYSTS ── */
     .community { background: var(--navy); }
@@ -1836,16 +1886,151 @@
           <tr>
             <td colspan="7">
               2023A–2025A: Orbia official releases (adjusted EBITDA). 2024A derived: 2025A $1,110M ÷ 0.93 (−7% YoY confirmed in Q4 2025 earnings release).
-              Sell-side 2026E–2027E are EMRL derivations from publicly available rating rationales, price targets, and guidance trajectory — individual broker model outputs are proprietary.
-              Independent/platform 2026E–2027E: Seeking Alpha implied from Strong Buy FCF/valuation thesis (3x FCF, 28% yield); Zacks consensus-tracked earnings revision model.
-              § Simply Wall St uses a DCF approach — forward EBITDA is not independently disclosed; fair value estimate implies stock is 55% below intrinsic value.
-              † Company guidance (Oct 2024): base + ~$100M incremental; pre-Iran war. ‡ Long-term target; market recovery could add $250–500M.
+              Sell-side 2026E–2027E: EMRL derivations from public rating rationales and guidance trajectory — individual broker models are proprietary.
+              Independent/platform: Seeking Alpha implied from 3x FCF / 28% yield thesis; Zacks consensus-tracked. § Simply Wall St: DCF model, EBITDA not disclosed.
+              EMRL Model: bottom-up segment build incorporating confirmed 2025A segment EBITDA (Wavin $246M, Koura $267M, Netafim $136M, Dura-Line $131M, Polymer Solutions ~$248M) and Iran war impact from Mar 2026. Company's $1,100–1,200M 2026 guidance was issued Feb 24, 2026 — four days before war outbreak — and does not reflect feedstock shock.
+              † Pre-Iran war guidance. ‡ Long-term target; market recovery adds $250–500M.
             </td>
+          </tr>
+          <!-- EMRL model divider -->
+          <tr class="section-divider emrl-divider">
+            <td colspan="7">EMRL Proprietary Model</td>
+          </tr>
+          <tr class="emrl-row">
+            <td>
+              <div class="broker-col">
+                <span class="broker-col-name">EMRL Research</span>
+                <span class="broker-col-badge outperform" style="background:rgba(6,214,160,0.15);color:var(--gold);border-radius:8px;padding:2px 7px;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;display:inline-block;width:fit-content;">Bottom-Up Model</span>
+              </div>
+            </td>
+            <td class="actual-val">$1,247</td>
+            <td class="actual-val">$1,194</td>
+            <td class="actual-val">$1,110</td>
+            <td class="est-val">$1,003</td>
+            <td class="est-val">$1,340</td>
+            <td class="vs-street below">−$102 / −9%</td>
           </tr>
         </tfoot>
       </table>
     </div>
   </div><!-- end ebitda-table-wrap -->
+
+  <!-- EMRL Model Bridge -->
+  <div class="model-bridge">
+    <div class="model-bridge-header">
+      <span class="model-bridge-tag">EMRL Model</span>
+      <h4>Bottom-Up EBITDA Bridge: 2025A → 2026E → 2027E</h4>
+    </div>
+    <div class="bridge-grid">
+
+      <div>
+        <div class="bridge-col-label">2025A → 2026E Build ($M adj.)</div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">2025A Adjusted EBITDA base</span>
+          <span class="bridge-row-val neutral">$1,110</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">+ Cost savings programme</span>
+          <span class="bridge-row-val pos">+$100</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">+ Koura LiPF₆ ramp &amp; refrigerants</span>
+          <span class="bridge-row-val pos">+$45</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">+ Americas PVC spread expansion</span>
+          <span class="bridge-row-val pos">+$25</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">− Polymer Solutions: Marl naphtha shock</span>
+          <span class="bridge-row-val neg">−$85</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">− Netafim: PE/LLDPE cost spike</span>
+          <span class="bridge-row-val neg">−$40</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">− Wavin: PVC resin cost pass-through lag</span>
+          <span class="bridge-row-val neg">−$30</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">− Dura-Line: HDPE cost spike</span>
+          <span class="bridge-row-val neg">−$27</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">− Freight, insurance &amp; logistics inflation</span>
+          <span class="bridge-row-val neg">−$20</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">− Volume/demand softness (Iran macro)</span>
+          <span class="bridge-row-val neg">−$20</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">+ Volume recovery (Netafim Brazil/US)</span>
+          <span class="bridge-row-val pos">+$15</span>
+        </div>
+        <hr class="bridge-divider">
+        <div class="bridge-row">
+          <span class="bridge-row-label">Net change</span>
+          <span class="bridge-row-val neg">−$107</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">EMRL 2026E EBITDA</span>
+          <span class="bridge-row-val total">$1,003</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="bridge-col-label">2026E → 2027E Build ($M adj.)</div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">2026E base</span>
+          <span class="bridge-row-val neutral">$1,003</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">+ Cost savings programme (2027 tranche)</span>
+          <span class="bridge-row-val pos">+$100</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">+ Iran war normalisation — naphtha/PE eases</span>
+          <span class="bridge-row-val pos">+$80</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">+ Koura LiPF₆ further ramp</span>
+          <span class="bridge-row-val pos">+$40</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">+ Wavin construction market recovery</span>
+          <span class="bridge-row-val pos">+$35</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">+ Netafim EM volume recovery</span>
+          <span class="bridge-row-val pos">+$35</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">+ Dura-Line BEAD programme acceleration</span>
+          <span class="bridge-row-val pos">+$25</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">+ Americas PVC plant progress</span>
+          <span class="bridge-row-val pos">+$15</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">− Macro / FX / execution risk buffer</span>
+          <span class="bridge-row-val neg">−$33</span>
+        </div>
+        <hr class="bridge-divider">
+        <div class="bridge-row">
+          <span class="bridge-row-label">Net change</span>
+          <span class="bridge-row-val pos">+$337</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">EMRL 2027E EBITDA</span>
+          <span class="bridge-row-val total">$1,340</span>
+        </div>
+      </div>
+
+    </div><!-- end bridge-grid -->
+  </div><!-- end model-bridge -->
 
   <p class="consensus-disclaimer">Sources: MarketScreener, Investing.com, GBM Media, Axis Negocios / Citibanamex, TradingView. Price targets and ratings are sourced from publicly available research summaries. EMRL Research has not independently verified these figures. This section is for informational purposes only and does not constitute investment advice. Analyst ratings are subject to change without notice.</p>
 
