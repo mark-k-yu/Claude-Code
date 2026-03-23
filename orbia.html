@@ -762,6 +762,90 @@
     }
     @media (max-width: 900px) { .consensus-summary { grid-template-columns: 1fr; } }
 
+    /* ── COMMUNITY & INDEPENDENT ANALYSTS ── */
+    .community { background: var(--navy); }
+    .platform-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-bottom: 44px;
+    }
+    .platform-card {
+      background: var(--gray-light); border-radius: 10px; padding: 22px 20px;
+      border: 1px solid rgba(255,255,255,0.07);
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .platform-card-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .platform-name { font-size: 0.95rem; font-weight: 700; color: var(--white); }
+    .platform-type {
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      color: rgba(255,255,255,0.35); margin-top: 3px;
+    }
+    .platform-rating-pill {
+      font-family: 'Arial', sans-serif; font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1px;
+      padding: 4px 11px; border-radius: 10px; white-space: nowrap;
+    }
+    .platform-rating-pill.strong-buy { background: rgba(6,214,160,0.2); color: var(--gold); border: 1px solid rgba(6,214,160,0.3); }
+    .platform-rating-pill.buy { background: rgba(6,214,160,0.12); color: var(--gold); border: 1px solid rgba(6,214,160,0.2); }
+    .platform-rating-pill.hold { background: rgba(251,146,60,0.12); color: #fb923c; border: 1px solid rgba(251,146,60,0.2); }
+    .platform-rating-pill.undervalued { background: rgba(96,165,250,0.12); color: #60a5fa; border: 1px solid rgba(96,165,250,0.2); }
+    .platform-stat-row {
+      display: flex; gap: 20px; flex-wrap: wrap;
+      padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .platform-stat-val { font-size: 1.05rem; font-weight: 700; color: var(--white); }
+    .platform-stat-label {
+      font-family: 'Arial', sans-serif; font-size: 0.71rem;
+      color: rgba(255,255,255,0.35); text-transform: uppercase; letter-spacing: 0.6px;
+    }
+    .platform-blurb {
+      font-family: 'Arial', sans-serif; font-size: 0.82rem;
+      color: rgba(255,255,255,0.55); line-height: 1.6;
+    }
+    .sa-articles-label {
+      font-family: 'Arial', sans-serif; font-size: 0.78rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.35);
+      margin-bottom: 16px;
+    }
+    .sa-article-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;
+    }
+    .sa-article-card {
+      background: var(--gray-light); border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.07); overflow: hidden;
+      transition: border-color 0.2s, transform 0.15s;
+    }
+    .sa-article-card:hover { border-color: rgba(124,58,237,0.4); transform: translateY(-2px); }
+    .sa-article-top {
+      padding: 18px 20px 14px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 12px;
+    }
+    .sa-article-title {
+      font-size: 0.9rem; font-weight: 600; color: var(--white); line-height: 1.4; flex: 1;
+    }
+    .sa-article-body { padding: 16px 20px 18px; display: flex; flex-direction: column; gap: 10px; }
+    .sa-article-meta {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      font-family: 'Arial', sans-serif; font-size: 0.76rem; color: rgba(255,255,255,0.38);
+    }
+    .sa-article-thesis {
+      font-family: 'Arial', sans-serif; font-size: 0.82rem;
+      color: rgba(255,255,255,0.57); line-height: 1.6;
+    }
+    .sa-article-link {
+      font-family: 'Arial', sans-serif; font-size: 0.8rem; font-weight: 700;
+      color: var(--teal-light); text-decoration: none; transition: color 0.2s;
+    }
+    .sa-article-link:hover { color: var(--gold); }
+    .community-disclaimer {
+      font-family: 'Arial', sans-serif; font-size: 0.77rem;
+      color: rgba(255,255,255,0.3); line-height: 1.6;
+      border-top: 1px solid rgba(255,255,255,0.07); padding-top: 20px;
+    }
+    @media (max-width: 900px) {
+      .platform-grid { grid-template-columns: 1fr; }
+      .sa-article-grid { grid-template-columns: 1fr; }
+    }
+
     /* ── STRATEGIC VIEW ── */
     .strategic { background: var(--cream); }
     .swot-grid {
@@ -850,6 +934,7 @@
     <li><a href="#tactical">Tactical</a></li>
     <li><a href="#strategic">Strategic</a></li>
     <li><a href="#consensus">Consensus</a></li>
+    <li><a href="#community">Community</a></li>
     <li><a href="index.html#pricing" class="nav-cta">Get Access</a></li>
   </ul>
 </nav>
@@ -1706,6 +1791,126 @@
   </div><!-- end ebitda-table-wrap -->
 
   <p class="consensus-disclaimer">Sources: MarketScreener, Investing.com, GBM Media, Axis Negocios / Citibanamex, TradingView. Price targets and ratings are sourced from publicly available research summaries. EMRL Research has not independently verified these figures. This section is for informational purposes only and does not constitute investment advice. Analyst ratings are subject to change without notice.</p>
+
+</section>
+
+<!-- COMMUNITY & INDEPENDENT ANALYSTS -->
+<section class="community" id="community">
+  <div class="section-label">Independent Analysts</div>
+  <h2>Community &amp; Platform Ratings</h2>
+  <p class="section-intro">Ratings and commentary from Seeking Alpha contributors, quantitative platforms, and independent analysts. These reflect retail and independent perspectives, distinct from institutional sell-side coverage.</p>
+
+  <!-- Platform summary cards -->
+  <div class="platform-grid">
+
+    <div class="platform-card">
+      <div class="platform-card-top">
+        <div>
+          <div class="platform-name">Seeking Alpha</div>
+          <div class="platform-type">Contributor articles · MXCHF / MXCHY</div>
+        </div>
+        <span class="platform-rating-pill strong-buy">Strong Buy</span>
+      </div>
+      <p class="platform-blurb">Most recent contributor article (Feb 2025) upgraded to Strong Buy, citing the stock trading at 3x FY25E FCF and a 28% free cash flow yield. A second article (May 2025) maintained Buy, crediting the debt refinancing as providing multi-year balance sheet flexibility despite the PVC downturn.</p>
+      <div class="platform-stat-row">
+        <div>
+          <div class="platform-stat-val">3x</div>
+          <div class="platform-stat-label">FY25E FCF multiple</div>
+        </div>
+        <div>
+          <div class="platform-stat-val">28%</div>
+          <div class="platform-stat-label">FCF yield (at time of article)</div>
+        </div>
+        <div>
+          <div class="platform-stat-val">2</div>
+          <div class="platform-stat-label">Recent articles</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="platform-card">
+      <div class="platform-card-top">
+        <div>
+          <div class="platform-name">Zacks</div>
+          <div class="platform-type">Quantitative earnings rank · MXCHY</div>
+        </div>
+        <span class="platform-rating-pill buy">Buy (Rank #2)</span>
+      </div>
+      <p class="platform-blurb">MXCHY upgraded to Zacks Rank #2 (Buy), driven by an upward trend in earnings estimate revisions. Zacks also classifies Orbia Advance as a strong value stock — the company scores well on their Value Style Score, reinforcing the buy case based on cheap valuation multiples relative to the sector.</p>
+      <div class="platform-stat-row">
+        <div>
+          <div class="platform-stat-val">#2</div>
+          <div class="platform-stat-label">Zacks rank</div>
+        </div>
+        <div>
+          <div class="platform-stat-val">Value</div>
+          <div class="platform-stat-label">Style score</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="platform-card">
+      <div class="platform-card-top">
+        <div>
+          <div class="platform-name">Simply Wall St</div>
+          <div class="platform-type">Intrinsic value model · BMV: ORBIA</div>
+        </div>
+        <span class="platform-rating-pill undervalued">Undervalued</span>
+      </div>
+      <p class="platform-blurb">Simply Wall St's DCF model estimates Orbia is trading at 55% below their estimate of fair value. The platform flags higher-than-average stock volatility (weekly vol of 8%, above 75% of MX-listed stocks) and recent credit rating downgrades as key risks to the valuation discount thesis.</p>
+      <div class="platform-stat-row">
+        <div>
+          <div class="platform-stat-val">−55%</div>
+          <div class="platform-stat-label">Discount to fair value est.</div>
+        </div>
+        <div>
+          <div class="platform-stat-val">8%</div>
+          <div class="platform-stat-label">Weekly vol (top quartile)</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end platform-grid -->
+
+  <!-- Seeking Alpha article deep-dives -->
+  <div class="sa-articles-label">Seeking Alpha — Featured Articles</div>
+  <div class="sa-article-grid">
+
+    <div class="sa-article-card">
+      <div class="sa-article-top">
+        <div class="sa-article-title">Orbia's Markets Are Challenged And The Name Offers Very Attractive Valuations</div>
+        <span class="platform-rating-pill strong-buy" style="flex-shrink:0;">Strong Buy</span>
+      </div>
+      <div class="sa-article-body">
+        <div class="sa-article-meta">
+          <span>📅 Feb 24, 2025</span>
+          <span>🏷 MXCHF</span>
+          <span>🔄 Upgrade from Buy</span>
+        </div>
+        <p class="sa-article-thesis">The author upgraded Orbia to Strong Buy following 4Q24 results, highlighting that the stock had de-rated to just 3x FY25E free cash flow — a level typically associated with value traps or genuine deep value. The 28% FCF yield implies the market is pricing in either permanent earnings impairment or near-term insolvency risk, neither of which the author considers warranted. Core thesis: weak end-markets (US construction, European infrastructure) are cyclical, not structural; Orbia's integrated value chain and five-division platform provide downside protection. Cost leadership and regional mix (EM-facing divisions) add resilience. Catalyst: any signs of construction recovery or PVC spread normalisation would trigger significant multiple expansion from these depressed levels.</p>
+        <a class="sa-article-link" href="https://seekingalpha.com/article/4761291-orbia-market-are-challenged-and-the-name-offers-very-attractive-valuations" target="_blank" rel="noopener">Read on Seeking Alpha →</a>
+      </div>
+    </div>
+
+    <div class="sa-article-card">
+      <div class="sa-article-top">
+        <div class="sa-article-title">Orbia's Recent Refinancing Gives It Air To Breathe During The Worst PVC Downturn In Recent History</div>
+        <span class="platform-rating-pill buy" style="flex-shrink:0;">Buy</span>
+      </div>
+      <div class="sa-article-body">
+        <div class="sa-article-meta">
+          <span>📅 May 21, 2025</span>
+          <span>🏷 MXCHF</span>
+          <span>✔ Maintained</span>
+        </div>
+        <p class="sa-article-thesis">Maintained Buy rating after Orbia successfully refinanced near-term debt maturities, removing a key bear-case trigger. The author acknowledged the worst PVC downturn in recent history is compressing Polymer Solutions and Wavin margins — FY25 EBITDA guidance was cut — but argues the refinancing buys management time to execute the $300M cost programme without being forced into distressed asset sales. Key differentiator: differentiated segments (Netafim, Koura) are showing genuine EBITDA growth even as commodity divisions suffer. The author identified US recession risk and further PVC price declines as the primary downside scenarios. Note: article predates the Feb 2026 Iran war and its subsequent naphtha/PE supply shock, which represents a material change to the risk profile since publication.</p>
+        <a class="sa-article-link" href="https://seekingalpha.com/article/4788824-orbias-recent-refinancing-gives-it-air-to-breathe-during-the-worst-pvc-downturn-in-recent-history" target="_blank" rel="noopener">Read on Seeking Alpha →</a>
+      </div>
+    </div>
+
+  </div><!-- end sa-article-grid -->
+
+  <p class="community-disclaimer">Sources: <a href="https://seekingalpha.com/symbol/MXCHY" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.4);">Seeking Alpha (MXCHY)</a>, <a href="https://www.zacks.com" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.4);">Zacks</a>, <a href="https://simplywall.st/stocks/mx/materials/bmv-orbia/orbia-advance-corporation-de-shares" target="_blank" rel="noopener" style="color:rgba(255,255,255,0.4);">Simply Wall St</a>. Articles and ratings reflect the views of independent contributors, not EMRL Research. Seeking Alpha contributor articles are user-generated and do not represent institutional research. Ratings, price targets, and theses are as of the dates shown and have not been updated to reflect the Feb 2026 Iran war macro shock. This section is for informational purposes only and does not constitute investment advice.</p>
 
 </section>
 
