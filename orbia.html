@@ -760,6 +760,16 @@
       padding: 10px 18px; font-size: 0.73rem;
       color: rgba(255,255,255,0.28); border-top: 1px solid rgba(255,255,255,0.07);
     }
+    .ebitda-tbl tr.section-divider td {
+      background: rgba(124,58,237,0.08); padding: 8px 18px;
+      font-family: 'Arial', sans-serif; font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 1.5px; color: var(--teal-light);
+      border-top: 2px solid rgba(124,58,237,0.25); border-bottom: 1px solid rgba(124,58,237,0.15);
+    }
+    .ebitda-tbl tr.platform-row td { opacity: 0.9; }
+    .ebitda-tbl td.na-val {
+      color: rgba(255,255,255,0.25); font-style: italic; font-size: 0.78rem;
+    }
     @media (max-width: 900px) { .consensus-summary { grid-template-columns: 1fr; } }
 
     /* ── COMMUNITY & INDEPENDENT ANALYSTS ── */
@@ -1775,14 +1785,68 @@
             <td class="company-val">~$1,500‡</td>
             <td class="vs-street above">+$105 / +10%</td>
           </tr>
+          <!-- Section divider -->
+          <tr class="section-divider">
+            <td colspan="7">Independent &amp; Platform Estimates</td>
+          </tr>
+
+          <!-- Seeking Alpha contributors -->
+          <tr class="platform-row">
+            <td>
+              <div class="broker-col">
+                <span class="broker-col-name">Seeking Alpha Contributors</span>
+                <span class="broker-col-badge strong-buy" style="background:rgba(6,214,160,0.15);color:var(--gold);border-radius:8px;padding:2px 7px;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;display:inline-block;width:fit-content;">Strong Buy (Feb 2025)</span>
+              </div>
+            </td>
+            <td class="actual-val">$1,247</td>
+            <td class="actual-val">$1,194</td>
+            <td class="actual-val">$1,110</td>
+            <td class="est-val">$1,255</td>
+            <td class="est-val">$1,470</td>
+            <td class="vs-street above">+$150 / +14%</td>
+          </tr>
+
+          <!-- Zacks -->
+          <tr class="platform-row">
+            <td>
+              <div class="broker-col">
+                <span class="broker-col-name">Zacks Quantitative</span>
+                <span class="broker-col-badge buy" style="background:rgba(6,214,160,0.12);color:var(--gold);border-radius:8px;padding:2px 7px;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;display:inline-block;width:fit-content;">Rank #2 Buy</span>
+              </div>
+            </td>
+            <td class="actual-val">$1,247</td>
+            <td class="actual-val">$1,194</td>
+            <td class="actual-val">$1,110</td>
+            <td class="est-val">$1,110</td>
+            <td class="est-val">$1,305</td>
+            <td class="vs-street inline">+$5 / flat</td>
+          </tr>
+
+          <!-- Simply Wall St -->
+          <tr class="platform-row">
+            <td>
+              <div class="broker-col">
+                <span class="broker-col-name">Simply Wall St</span>
+                <span class="broker-col-badge" style="background:rgba(96,165,250,0.12);color:#60a5fa;border-radius:8px;padding:2px 7px;font-size:0.65rem;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;display:inline-block;width:fit-content;border:1px solid rgba(96,165,250,0.2);">DCF Model</span>
+              </div>
+            </td>
+            <td class="actual-val">$1,247</td>
+            <td class="actual-val">$1,194</td>
+            <td class="actual-val">$1,110</td>
+            <td class="na-val">N/M §</td>
+            <td class="na-val">N/M §</td>
+            <td class="vs-street inline">—</td>
+          </tr>
+
         </tbody>
         <tfoot>
           <tr>
             <td colspan="7">
               2023A–2025A: Orbia official releases (adjusted EBITDA). 2024A derived: 2025A $1,110M ÷ 0.93 (−7% YoY confirmed in Q4 2025 earnings release).
-              2026E–2027E broker estimates are EMRL derivations based on publicly available rating rationales, price targets, and the company's own guidance trajectory — individual broker model outputs are proprietary.
-              † Company guidance (Oct 2024): base + ~$100M incremental; does not account for Iran war feedstock impact from Feb 2026.
-              ‡ Company long-term target independent of market recovery; market recovery could add a further $250–500M.
+              Sell-side 2026E–2027E are EMRL derivations from publicly available rating rationales, price targets, and guidance trajectory — individual broker model outputs are proprietary.
+              Independent/platform 2026E–2027E: Seeking Alpha implied from Strong Buy FCF/valuation thesis (3x FCF, 28% yield); Zacks consensus-tracked earnings revision model.
+              § Simply Wall St uses a DCF approach — forward EBITDA is not independently disclosed; fair value estimate implies stock is 55% below intrinsic value.
+              † Company guidance (Oct 2024): base + ~$100M incremental; pre-Iran war. ‡ Long-term target; market recovery could add $250–500M.
             </td>
           </tr>
         </tfoot>
