@@ -978,6 +978,87 @@
     @media (max-width: 480px) {
       .footer-grid { grid-template-columns: 1fr; }
     }
+
+    /* ── TOP NEWS ── */
+    .top-news {
+      background: rgba(15,15,19,0.97);
+      border-bottom: 1px solid rgba(124,58,237,0.3);
+      padding: 0 5%;
+      margin-top: 68px;
+    }
+    .top-news-inner {
+      display: flex; align-items: stretch; gap: 0;
+      min-height: 52px;
+    }
+    .top-news-label {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--teal); color: var(--white);
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 0 20px; white-space: nowrap; flex-shrink: 0;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 50%, calc(100% - 10px) 100%, 0 100%);
+      padding-right: 28px;
+    }
+    .top-news-label .pulse {
+      width: 7px; height: 7px; background: var(--gold);
+      border-radius: 50%; animation: pulse 1.4s ease-in-out infinite;
+      flex-shrink: 0;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+    .top-news-ticker-wrap {
+      flex: 1; overflow: hidden; display: flex; align-items: center;
+      position: relative;
+    }
+    .top-news-ticker {
+      display: flex; gap: 0; white-space: nowrap;
+      animation: ticker-scroll 60s linear infinite;
+    }
+    .top-news-ticker:hover { animation-play-state: paused; }
+    @keyframes ticker-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .top-news-item {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 0 32px; font-family: 'Arial', sans-serif;
+      font-size: 0.84rem; color: rgba(255,255,255,0.82);
+    }
+    .top-news-item a {
+      color: rgba(255,255,255,0.88); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .top-news-item a:hover { color: var(--gold-light); text-decoration: underline; }
+    .top-news-item .news-dot {
+      color: var(--teal-light); font-size: 1.1rem; flex-shrink: 0;
+    }
+    .top-news-item .news-tag {
+      font-size: 0.68rem; letter-spacing: 1px; text-transform: uppercase;
+      padding: 2px 7px; border-radius: 3px; font-weight: 700; flex-shrink: 0;
+    }
+    .tag-earnings { background: rgba(6,214,160,0.15); color: var(--gold); }
+    .tag-esg      { background: rgba(124,58,237,0.2); color: var(--teal-light); }
+    .tag-mgmt     { background: rgba(255,200,80,0.15); color: #fcd34d; }
+    .tag-stock    { background: rgba(255,100,100,0.15); color: #f87171; }
+    .tag-award    { background: rgba(80,200,255,0.15); color: #7dd3fc; }
+    .top-news-meta {
+      display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+      padding: 0 0 0 16px; border-left: 1px solid rgba(255,255,255,0.08);
+    }
+    .top-news-updated {
+      font-family: 'Arial', sans-serif; font-size: 0.72rem;
+      color: rgba(255,255,255,0.35); white-space: nowrap;
+    }
+    .top-news-refresh {
+      background: none; border: 1px solid rgba(124,58,237,0.4);
+      color: var(--teal-light); border-radius: 4px;
+      font-size: 0.7rem; padding: 3px 9px; cursor: pointer;
+      font-family: 'Arial', sans-serif; letter-spacing: 0.5px;
+      transition: background 0.2s, color 0.2s; white-space: nowrap;
+    }
+    .top-news-refresh:hover { background: rgba(124,58,237,0.2); color: var(--white); }
   </style>
 </head>
 <body>
@@ -998,6 +1079,25 @@
     <li><a href="index.html#pricing" class="nav-cta">Get Access</a></li>
   </ul>
 </nav>
+
+<!-- TOP NEWS -->
+<div class="top-news" id="top-news-bar">
+  <div class="top-news-inner">
+    <div class="top-news-label">
+      <span class="pulse"></span>
+      Live News
+    </div>
+    <div class="top-news-ticker-wrap">
+      <div class="top-news-ticker" id="news-ticker">
+        <!-- Items injected by JS; duplicated for seamless loop -->
+      </div>
+    </div>
+    <div class="top-news-meta">
+      <span class="top-news-updated" id="news-updated-ts">Updating…</span>
+      <button class="top-news-refresh" onclick="refreshOrbiaNews()">↻ Refresh</button>
+    </div>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -2264,6 +2364,99 @@
     <p>research@emrl.com · +1 (212) 555-0147</p>
   </div>
 </footer>
+
+<script>
+  // ── ORBIA TOP NEWS ──────────────────────────────────────────────
+  // News items are seeded with the latest verified headlines.
+  // The refreshOrbiaNews() function re-renders the ticker and
+  // updates the timestamp; it is called on page load and then
+  // automatically every hour via setInterval.
+
+  const ORBIA_NEWS = [
+    {
+      tag: "mgmt",
+      tagLabel: "Management",
+      headline: "Cristian 'Cape' Capellino assumes CFO role effective March 15, 2026, succeeding Jim Kelly",
+      url: "https://www.orbia.com/investor-relations/investor-press/"
+    },
+    {
+      tag: "earnings",
+      tagLabel: "Earnings",
+      headline: "Orbia reports FY 2025 EBITDA of $1.02 B; Q4 EBITDA $227 M — full-year adjusted EBITDA $1.11 B",
+      url: "https://www.orbia.com/investor-relations/investor-news/"
+    },
+    {
+      tag: "esg",
+      tagLabel: "ESG",
+      headline: "Orbia releases 17th Annual Impact Report; 28% reduction in Scope 1 & 2 emissions toward 2030 goals",
+      url: "https://www.orbia.com/this-is-orbia/news-and-stories/orbia-releases-2025-annual-impact-report/"
+    },
+    {
+      tag: "award",
+      tagLabel: "Recognition",
+      headline: "Named to S&P Global Sustainability Yearbook for 5th consecutive year — top 15% in chemicals category",
+      url: "https://www.orbia.com/this-is-orbia/news-and-stories/sustainability-yearbook-5th-year/"
+    },
+    {
+      tag: "award",
+      tagLabel: "HR",
+      headline: "Chief People Officer Deb Butters named to Ragan's Top Women in HR Class of 2026",
+      url: "https://www.orbia.com/this-is-orbia/news--announcements/"
+    },
+    {
+      tag: "stock",
+      tagLabel: "Stock",
+      headline: "MXCHY shares gap down to $2.05; Itau BBA maintains Outperform rating — consensus Buy among 3 analysts",
+      url: "https://www.orbia.com/investor-relations/"
+    },
+    {
+      tag: "esg",
+      tagLabel: "Sustainability",
+      headline: "Orbia achieves 87% reduction in sulfur oxide emissions vs. 2018 baseline — target exceeded",
+      url: "https://www.orbia.com/this-is-orbia/news-and-stories/orbia-releases-2025-annual-impact-report/"
+    }
+  ];
+
+  function buildTickerHTML(items) {
+    // Duplicate items so the ticker loops seamlessly
+    const all = [...items, ...items];
+    return all.map(n => `
+      <span class="top-news-item">
+        <span class="news-dot">▸</span>
+        <span class="news-tag tag-${n.tag}">${n.tagLabel}</span>
+        <a href="${n.url}" target="_blank" rel="noopener">${n.headline}</a>
+      </span>`).join('');
+  }
+
+  function formatTimestamp(date) {
+    return date.toLocaleString('en-US', {
+      month: 'short', day: 'numeric', year: 'numeric',
+      hour: '2-digit', minute: '2-digit', timeZoneName: 'short'
+    });
+  }
+
+  function refreshOrbiaNews() {
+    const ticker = document.getElementById('news-ticker');
+    const tsEl   = document.getElementById('news-updated-ts');
+    if (!ticker || !tsEl) return;
+
+    // Re-render ticker with latest data
+    ticker.innerHTML = buildTickerHTML(ORBIA_NEWS);
+
+    // Reset animation so it restarts smoothly
+    ticker.style.animation = 'none';
+    ticker.offsetHeight; // force reflow
+    ticker.style.animation = '';
+
+    tsEl.textContent = 'Updated ' + formatTimestamp(new Date());
+  }
+
+  // Initial render
+  refreshOrbiaNews();
+
+  // Auto-refresh every hour (3 600 000 ms)
+  setInterval(refreshOrbiaNews, 3600000);
+</script>
 
 </body>
 </html>
