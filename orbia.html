@@ -795,7 +795,18 @@
       padding: 3px 10px; border-radius: 8px;
     }
     .bridge-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px;
+    }
+    .bridge-col-mky { border-left: 2px solid rgba(251,191,36,0.35); padding-left: 16px; }
+    .bridge-col-label.mky { color: #fbbf24; }
+    .bridge-source-tag {
+      font-family: 'Arial', sans-serif; font-size: 0.65rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.8px;
+      background: rgba(251,191,36,0.12); color: #fbbf24;
+      padding: 1px 7px; border-radius: 6px; margin-left: 6px; vertical-align: middle;
+    }
+    .bridge-source-tag.emrl {
+      background: rgba(6,214,160,0.1); color: var(--gold);
     }
     .bridge-col-label {
       font-family: 'Arial', sans-serif; font-size: 0.72rem; font-weight: 700;
@@ -817,9 +828,10 @@
     .bridge-divider {
       border: none; border-top: 1px solid rgba(255,255,255,0.12); margin: 6px 0;
     }
-    @media (max-width: 900px) {
+    @media (max-width: 1100px) {
       .consensus-summary { grid-template-columns: 1fr; }
       .bridge-grid { grid-template-columns: 1fr; }
+      .bridge-col-mky { border-left: none; padding-left: 0; border-top: 2px solid rgba(251,191,36,0.35); padding-top: 16px; }
     }
 
     /* ── COMMUNITY & INDEPENDENT ANALYSTS ── */
@@ -2018,7 +2030,7 @@
   <!-- EMRL Model Bridge -->
   <div class="model-bridge">
     <div class="model-bridge-header">
-      <span class="model-bridge-tag">EMRL Model</span>
+      <span class="model-bridge-tag">EMRL + MKY Model</span>
       <h4>Bottom-Up EBITDA Bridge: 2025A → 2026E → 2027E</h4>
     </div>
     <div class="bridge-grid">
@@ -2077,6 +2089,60 @@
         <div class="bridge-row">
           <span class="bridge-row-label">EMRL 2026E EBITDA</span>
           <span class="bridge-row-val total">$1,003</span>
+        </div>
+      </div>
+
+      <!-- MKY 2026E Column -->
+      <div class="bridge-col-mky">
+        <div class="bridge-col-label mky">2025A → 2026E Build — MKY Model ($M adj.)</div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">2025A Adjusted EBITDA base</span>
+          <span class="bridge-row-val neutral">$1,110</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">+ Cost savings programme <span class="bridge-source-tag emrl">EMRL</span></span>
+          <span class="bridge-row-val pos">+$100</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">+ Koura LiPF₆ ramp &amp; refrigerants <span class="bridge-source-tag emrl">EMRL</span></span>
+          <span class="bridge-row-val pos">+$45</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">+ Americas PVC spread <span class="bridge-source-tag">MKY</span></span>
+          <span class="bridge-row-val pos">+$75</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">+ Wavin B&amp;I: PVC pass-through + volume <span class="bridge-source-tag">MKY</span></span>
+          <span class="bridge-row-val pos">+$81</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">± Vestolit Marl — naphtha/PVC net <span class="bridge-source-tag">MKY</span></span>
+          <span class="bridge-row-val neutral">$0</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">− Netafim: PE cost net of pass-through <span class="bridge-source-tag">MKY</span></span>
+          <span class="bridge-row-val neg">−$11</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">± Dura-Line: HDPE net of pass-through <span class="bridge-source-tag">MKY</span></span>
+          <span class="bridge-row-val neutral">$0</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">− Freight, insurance &amp; logistics <span class="bridge-source-tag emrl">EMRL</span></span>
+          <span class="bridge-row-val neg">−$20</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">− Volume/demand softness (Iran macro) <span class="bridge-source-tag emrl">EMRL</span></span>
+          <span class="bridge-row-val neg">−$20</span>
+        </div>
+        <hr class="bridge-divider">
+        <div class="bridge-row">
+          <span class="bridge-row-label">Net change</span>
+          <span class="bridge-row-val pos">+$250</span>
+        </div>
+        <div class="bridge-row">
+          <span class="bridge-row-label">MKY 2026E EBITDA</span>
+          <span class="bridge-row-val total">$1,360</span>
         </div>
       </div>
 
